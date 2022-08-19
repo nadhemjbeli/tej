@@ -1,0 +1,82 @@
+<header>
+    <div class="r-header r-header-inner r-header-strip-01">
+        <!-- menu -->
+        <div class="r-header-strip r-header-strip-01">
+            <div class="container">
+                <div class="row clearfix">
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                        <div class="r-logo">
+                            <a href="{{ path('app_home') }}" class="d-inline-block"><img src="assets/images/logo.png"
+                                                                             class="img-fluid d-block" alt=""></a>
+                        </div>
+                        <a href="javaScript:void(0)" class="menu-icon"> <i class="fa fa-bars"></i> </a>
+                    </div>
+                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                        <div class="r-header-action float-right">
+                            <a href="#" target="_blank"> <img src="{{ asset('assets/images/icon-tel.png') }}" alt=''/> <span
+                                        class="tel">23 345 525</span></a>
+                            <a href="https://api.whatsapp.com/send?phone=21629345708" target="_blank"> <img
+                                        src="assets/images/icon-lock.png" alt=''/><img
+                                        src="assets/images/icon-viber.png" alt=''/>
+                                <span>21 548 479<br>29 345 708</span></a>
+                            <div class="r-search-wrapper">
+                                <div class="r-search-inner">
+                                    <form>
+                                        <input type="text" class="r-search-field" placeholder="Search"/>
+                                        <button type="submit" class="r-search-btn">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div> <!-- /r-search-wrapper -->
+                        </div>
+                        <div class="r-nav-section float-left">
+                            <nav>
+                                <ul>
+                                    <li>
+                                        <a href="{{ path('app_home') }}" {% if app.request.get('_route') == 'app_home' %} class="active" {% endif %}>Acceuil</a>
+                                    </li>
+                                    <li>
+                                        <a href="tarifs.html">Tarifs</a>
+                                    </li>
+                                    <li >
+                                        <a href="{{ path('app_client_voiture') }}" {% if app.request.get('_route') == 'app_client_voiture' %} class="active" {% endif %}>Voitures</a>
+                                    </li>
+                                    <li>
+                                        <a href="agences.html">Agences</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('app_points_forts') }}" {% if app.request.get('_route') == 'app_points_forts' %} class="active" {% endif %}>Points Forts</a>
+                                    </li>
+                                    <li>
+                                        <a href="taxi-tunisie.html">Taxi Tunisie</a>
+                                    </li>
+                                    <li>
+                                        <a href="contact.html">Contact</a>
+                                    </li>
+                                    <li>
+                                        <a href="blog/index.html" class="blog">Blog</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>            <!-- banner -->
+        <div class="r-slider owl-carousel" id="defaultHomeSlider">
+            <div class="r-slider-item">
+                <img src="{{ asset('assets/images/main-slider-01.jpg') }}" class="img-fluid d-block m-auto" alt="">
+                <div class="container">
+                    <div class="r-slider-top-content">
+                        <h1 class="animated fadeInDown">Kia <span>Rio</span></h1>
+
+                        <a href="#" class="btn btn-outlined animated fadeInUp"> Réserver </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- recherche -->
+    </div>
+</header>        <!-- /Header -->

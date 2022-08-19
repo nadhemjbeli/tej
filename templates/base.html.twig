@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="icon"
+          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+    <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+
+    <!-- Mirrored from www.tejrentcar.com/index.php by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Jul 2022 01:26:20 GMT -->
+    <!-- Added by HTTrack -->
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/><!-- /Added by HTTrack -->
+    <head>
+        <!-- PAGE TITLE -->
+        <title>Agence location voiture en Tunisie - voiture économique pas cher </title>
+
+        <!-- META-DATA -->
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+        <meta name="description"
+              content="Agence location voiture en Tunisie : louer une voiture économique pas cher avec Tej Rent Car & réservez votre transfert à l’aéroport Tunis Carthage, Djerba, Enfidha, Monastir… Nous vous garantissons des voitures de location récentes et propres. Réservez votre location en ligne, devis gratuit& rapide.">
+        <meta name="keywords"
+              content="Location voiture Tunisie, location voiture économique, louer une voiture en Tunisie, transfert taxi Tunisie ">
+        <link rel="canonical" href="index-2.html"/>
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+        <!-- FAVICON -->
+        <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}">
+
+        <!-- CSS:: FONTS -->
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+        <!-- CSS:: DATEPICKER -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/plugins/datepicker/datepicker.css') }}">
+
+
+        <!-- CSS:: ANIMATE -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/plugins/animate/animate.css') }}">
+
+        <!-- CSS:: MAIN -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/main.css') }}">
+        <link rel="stylesheet" type="text/css" id="r-color-roller"
+              href="{{ asset('assets/color-files/color-08.css') }}">
+
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQZ7PBX3GW"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+
+            gtag('js', new Date());
+
+            gtag('config', 'G-ZQZ7PBX3GW');
+        </script>
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+    <div class="r-wrapper">
+        {% include'skeleton/client_nav.html.twig' %}
+
+{#        <div class="sidebar s2 collapsed" data-position="right" data-layout="col-3cm" data-sb-id="s2">#}
+
+{#            <button class="sidebar-toggle" title="Étendre la colonne latérale"><i class="fas sidebar-toggle-arrows"></i>#}
+{#            </button>#}
+
+{#            <div class="sidebar-content">#}
+
+{#                <div class="sidebar-top group">#}
+{#                    <p>Plus</p>#}
+{#                </div>#}
+
+
+{#            </div><!--/.sidebar-content-->#}
+
+{#        </div><!--/.sidebar-->#}
+        {% block body %}{% endblock %}
+        <div id="r-to-top" class="r-to-top"><i class="fa fa-angle-up"></i></div>
+        {{ include('footer.html.twig') }}
+    </div>
+
+
+    <!-- JQUERY:: JQUERY.JS -->
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+
+    <!-- JQUERY:: APPEAR.JS -->
+    <script src="{{ asset('assets/js/plugins/appear/appear.js') }}"></script>
+
+    <!-- JQUERY:: COUNTER.JS -->
+    <script src="{{ asset('assets/js/plugins/counter/jquery.easing.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/counter/counter.min.js') }}"></script>
+
+    <!-- JQUERY:: BOOTSTRAP.JS -->
+    <script src="{{ asset('assets/js/tether.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+
+    <!-- JQUERY:: DATEPICKER.JS -->
+    <script src="{{ asset('assets/js/plugins/datepicker/moment-with-locales.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/datepicker/moment-timezone.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/datepicker/bootstrap-datepicker.js') }}"></script>
+
+    <!-- JQUERY:: PLUGINS -->
+    <script src="{{ asset('assets/js/plugins/owl/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/lightcase/lightcase.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/owl/owl.carousel2.thumbs.js') }}"></script>
+
+{#    <script src="{{ asset('assets/js/jquery.selectric.html') }}"></script>#}
+{#    <script src="{{ asset('assets/js/jquery.selectric.min.html') }}"></script>#}
+    <!-- JQUERY:: CUSTOM.JS -->
+    <script src="{{ asset('assets/js/custom.js') }}"></script>
+    </body>
+</html>

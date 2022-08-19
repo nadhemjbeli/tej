@@ -1,0 +1,314 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ClientReservationController!{% endblock %}
+
+{% block body %}
+    <div class="r-slider-serach r-slider-serach-down form-search dark">
+        <div class="container">
+            <div class="r-top-form-title animated fadeInUp">
+                <span>Un grand choix de véhicules &  +30ANS d'expérience</span>
+                <h3>Trouvez la voiture qui vous convient chez<b> Tej Rent Car</b></h3>
+            </div>
+
+            <form action="https://www.tejrentcar.com/voitures.php" method="post">
+                <div class="row row-inputs">
+                    <div class="col-sm-6">
+                        <div class="form-group has-icon has-label">
+                            <label>Lieu de Prise</label>
+                            <select class="form-control" id="lieu_prise" name="lieu_prise">
+                                <option value="0">A&eacute;roport Tunis Carthage</option>
+                                <option value="1">A&eacute;roport enfidha</option>
+                                <option value="2">A&eacute;roport monastir</option>
+                                <option value="3">A&eacute;roport Djerba</option>
+                                <option value="4">Tunis</option>
+                                <option value="5">Nabeul</option>
+                                <option value="6">Hammamet</option>
+                                <option value="7">Sousse</option>
+                                <option value="8">Sfax</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group has-icon has-label">
+                            <label>Lieu de Prise</label>
+                            <select class="form-control" id="lieu_prise" name="lieu_prise">
+                                <option value="0">A&eacute;roport Tunis Carthage</option>
+                                <option value="1">A&eacute;roport enfidha</option>
+                                <option value="2">A&eacute;roport monastir</option>
+                                <option value="3">A&eacute;roport Djerba</option>
+                                <option value="4">Tunis</option>
+                                <option value="5">Nabeul</option>
+                                <option value="6">Hammamet</option>
+                                <option value="7">Sousse</option>
+                                <option value="8">Sfax</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group has-icon has-label label" id="datetimepicker2"
+                             data-target-input="nearest">
+                            <label>Date de Prise</label>
+                            <input id="date_debut" name="date_debut" type="text" class="form-control datepicker"
+                                   data-toggle="datetimepicker" data-target="#datetimepicker2" placeholder="dd-mm-yyyy"
+                                   value="22-07-2022">
+                            <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group has-icon has-label date" data-target-input="nearest">
+                            <label>Heure de prise</label>
+                            <select class="form-control" id="heure_debut" name="heure_debut">
+                                {% for i in range(0, 25) %}
+                                    {% if i <= 9 %}
+                                        <option value="0{{ i }}h:00">00h:00</option>
+                                    {% else %}
+                                        <option value="{{ i }}h:00">00h:00</option>
+                                    {% endif %}
+                                {% endfor %}
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group has-icon has-label label" id="datetimepicker3"
+                             data-target-input="nearest">
+                            <label>Date de reprise</label>
+                            <input id="date_fin" name="date_fin" type="text" class="form-control datepicker"
+                                   data-toggle="datetimepicker" data-target="#datetimepicker3" placeholder="dd-mm-yyyy"
+                                   value="25.07.2022">
+                            <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group has-icon has-label date" data-target-input="nearest">
+                            <label>Heure de reprise</label>
+                            <select class="form-control" id="heure_fin" name="heure_fin">
+                                <option value="00h:00">00h:00</option>
+                                <option value="01h:00">01h:00</option>
+                                <option value="02h:00">02h:00</option>
+                                <option value="03h:00">03h:00</option>
+                                <option value="04h:00">04h:00</option>
+                                <option value="05h:00">05h:00</option>
+                                <option value="06h:00">06h:00</option>
+                                <option value="07h:00">07h:00</option>
+                                <option value="08h:00">08h:00</option>
+                                <option value="09h:00">09h:00</option>
+                                <option value="10h:00">10h:00</option>
+                                <option value="11h:00">11h:00</option>
+                                <option value="12h:00">12h:00</option>
+                                <option value="13h:00">13h:00</option>
+                                <option value="14h:00">14h:00</option>
+                                <option value="15h:00">15h:00</option>
+                                <option value="16h:00">16h:00</option>
+                                <option value="17h:00">17h:00</option>
+                                <option value="18h:00">18h:00</option>
+                                <option value="19h:00">19h:00</option>
+                                <option value="20h:00">20h:00</option>
+                                <option value="21h:00">21h:00</option>
+                                <option value="22h:00">22h:00</option>
+                                <option value="23h:00">23h:00</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="r-car-filter-area">
+
+                        </div>
+
+
+                    </div>
+                    <div class="col-12 mb-3">
+                        <hr>
+                    </div>
+                    <div class="inner col-12 clearfix">
+                        <button type="submit" class="btn m-auto d-block float-right btn-full">RESERVER VOITURE</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <section class="r-car-showcase-wrapper">
+        <div class="r-best-vehicles">
+            <div class="container">
+                <div class="row">
+
+                    {# <style> #}
+                    {# .selectric-scroll ul li{ #}
+                    {# padding-left: 31px; #}
+                    {# } #}
+                    {# .selectric-scroll ul li:first-child{ #}
+                    {# padding-left: 10px; #}
+                    {# font-weight:bold #}
+                    {# } #}
+
+                    {# .selectric-scroll ul li.selected{ #}
+                    {# padding-left: 15px; #}
+                    {# } #}
+                    {# .selectric-scroll ul li.selected:before{ #}
+                    {# content: '✔'; #}
+                    {# padding-right: 5px; #}
+                    {# } #}
+                    {# </style> #}
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="r-car-filter-area">
+                            <form action="" method="post" name="search_form">
+                                <div class="row">
+
+                                    <div class=" col-lg-3 col-md-12 col-sm-12">
+                                        <div class="selectric-wrapper selectric-custom-select selectric-filter-select selectric-below"></div>
+                                        <br>
+                                        <select class="form-select filter-select" data-tag="transmission" id="get_value"
+                                                name="_transmission">
+                                            <option disabled selected>Transmission</option>
+                                            <option value="Automatique">Automatique</option>
+                                            <option value="Manuelle">Manuelle</option>
+                                        </select>
+                                    </div>
+                                    <div class=" col-lg-3 col-md-12 col-sm-12">
+                                        <br>
+                                        <select class="form-select" aria-label="Default select example"
+                                                name="_categorie">
+                                            <option value="" disabled="disabled" selected>Catégorie</option>
+                                            {% for categorie in categories %}
+                                                <option value="{{ categorie }}">{{ categorie }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class=" col-lg-3 col-md-12 col-sm-12">
+                                        <br>
+                                        <select class="form-select" aria-label="Default select example"
+                                                name="_carburant">
+                                            <option value="" disabled="disabled" selected>Carburant</option>
+                                            {% for carburant in carburants %}
+                                                <option value="{{ carburant }}">{{ carburant }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class=" col-lg-3 col-md-12 col-sm-12">
+                                        <button type="submit" class="btn m-auto d-block float-right btn-full">Chercher
+                                        </button>
+                                    </div>
+                                    <br>
+                                    <div class="inner col-12 clearfix">
+                                        {# <button type="submit" class="btn m-auto d-block float-right btn-full">Chercher</button> #}
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+
+
+                        <div class="r-car-showcase">
+                            <div class="row clearfix r-best-offer-list">
+
+
+                                {% for voiture in voitures %}
+                                    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12 car-result">
+
+                                        <form action="https://www.tejrentcar.com/booking.php" method="post" id="book1">
+
+                                            <input type="hidden" name="vhid" value="1"/>
+                                            <input type="hidden" name="date_debut" value=""/>
+                                            <input type="hidden" name="date_fin" value=""/>
+                                            <input type="hidden" name="heure_debut" value=""/>
+                                            <input type="hidden" name="heure_fin" value=""/>
+                                            <input type="hidden" name="lieu_prise" value=""/>
+                                            <input type="hidden" name="lieu_reprise" value=""/>
+
+                                            {# <div class="r-best-offer-single"> #}
+                                            {# <div class="r-best-offer-in"> #}
+                                            {# <div class="r-offer-img"> #}
+                                            {# <a class="d-inline-block" href="booking0e5f.html?vhid=1"><img src="admin/img/vehicleimages/CALSS%20e.jpg" class="img-fluid d-block m-auto" alt=""></a> #}
+
+                                            {# </div> #}
+                                            {# <div class="r-best-offer-content"> #}
+                                            {# <a href="booking0e5f.html?vhid=1"><b>Mercedes E180</b> VIP </a> #}
+                                            {# <p><b>190 €</b> /Jour</p> #}
+
+
+                                            {# <ul class="pl-0 mb-0"> #}
+                                            {# <li><i class="fa fa-car"></i><span>2020</span></li> #}
+                                            {# <li><i class="fa fa-cogs"></i><span>Automatique</span></li> #}
+                                            {# <li><i class="fa fa-beer"></i><span>Essence</span></li> #}
+                                            {# <li><i class="fa fa-users"></i><span>5</span></li> #}
+                                            {# <li><i class="fa fa-briefcase"></i><span>540L</span></li> #}
+                                            {# <li><i class="fa fa-snowflake-o"></i><span>Oui</span></li>								  </ul> #}
+                                            {# </div> #}
+                                            {# <div class="r-offer-rewst-this"> #}
+                                            {# <span class="text-uppercase"><a href="#" onclick="document.getElementById('book1').submit();">Réserver cette voiture</a></span> #}
+                                            {# </div> #}
+                                            {# </div> #}
+                                            {# </div> #}
+                                            <div class="r-best-offer-single">
+                                                <div class="r-best-offer-in">
+                                                    <div class="r-offer-img">
+                                                        <a class="d-inline-block" href="booking0e5f.html?vhid=1"><img
+                                                                    src="{{ asset('admin/img/voiture/'~voiture.image) }}"
+                                                                    class="img-fluid d-block m-auto" alt=""></a>
+
+                                                    </div>
+                                                    <div class="r-best-offer-content">
+                                                        <a href="booking0e5f.html?vhid=1"><b>{{ voiture.marque }}</b> {{ voiture.categorie }}
+                                                        </a>
+                                                        <p><b>190 €</b> /Jour</p>
+
+
+                                                        <ul class="pl-0 mb-0">
+                                                            <li>
+                                                                <i class="fa fa-car"></i><span>{{ voiture.annee }}</span>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fa fa-cogs"></i><span>{{ voiture.transmission }}</span>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fa fa-beer"></i><span>{{ voiture.carburant }}</span>
+                                                            </li>
+                                                            <li><i class="fa fa-users"></i><span>5</span></li>
+                                                            <li>
+                                                                <i class="fa fa-briefcase"></i><span>{{ voiture.puissance }}L</span>
+                                                            </li>
+                                                            <li><i class="fa fa-snowflake-o"></i><span>Oui</span></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="r-offer-rewst-this">
+                                                        {# <span class="text-uppercase"><a href="#" onclick="document.getElementById('book1').submit();">Réserver cette voiture</a></span> #}
+                                                        <span class="text-uppercase"><a
+                                                                    href="">Réserver cette voiture</a></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </form>
+
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        $(function () {
+            $('.custom-options').selectric({
+                optionsItemBuilder: function (itemData) {
+                    return itemData.value.length ? '<span class="ico ico-' + itemData.value + '"></span>' + itemData.text : itemData.text;
+                }
+            });
+
+            $('.custom-label').selectric({
+                labelBuilder: function (currItem) {
+                    return '<strong><em>' + currItem.text + '</em></strong>';
+                }
+            });
+
+            $('select').selectric();
+        });
+
+
+    </script>
+{% endblock %}

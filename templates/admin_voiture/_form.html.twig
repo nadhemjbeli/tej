@@ -1,0 +1,12 @@
+{{ form_start(form) }}
+    {{ form_row(form.marque) }}
+    {{ form_row(form.carburant) }}
+    {{ form_row(form.transmission) }}
+    {{ form_row(form.puissance) }}
+    {{ form_row(form.categorie) }}
+    {{ form_row(form.annee) }}
+    {{ form_row(form.agence) }}
+    {{ form_row(form.image) }}
+    {{ form_row(form.prixJour) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
