@@ -1,7 +1,10 @@
 {% extends 'base.html.twig' %}
-{% block 'title' %}
-
+{% block title %}
+    Conducteur
 {% endblock %}
-{% block 'body' %}
-
+{% block body %}
+    <div class="container">
+        <h2>Conducteur</h2>
+        {% include'client_reservation/reserve/_form.html.twig' %}
+    </div>
 {% endblock %}

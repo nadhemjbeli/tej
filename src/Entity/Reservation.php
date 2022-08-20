@@ -54,10 +54,9 @@ class Reservation
     private $id_voiture;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Conducteur::class, inversedBy="id_reserveation")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\Column(type="string", length=50, nullable=true, unique=true)
      */
-    private $conducteur;
+    private $code;
 
     public function getId(): ?int
     {
@@ -148,19 +147,19 @@ class Reservation
         return $this;
     }
 
-    public function getConducteur(): ?Conducteur
-    {
-        return $this->conducteur;
-    }
-
-    public function setConducteur(?Conducteur $conducteur): self
-    {
-        $this->conducteur = $conducteur;
-
-        return $this;
-    }
-
     public function __toString(): string {
         return $this->getId();
+    }
+
+    public function getCode(): ?string
+    {
+        return $this->code;
+    }
+
+    public function setCode(?string $code): self
+    {
+        $this->code = $code;
+
+        return $this;
     }
 }

@@ -1,0 +1,62 @@
+{% extends 'admin_base.html.twig' %}
+
+{% block title %}Conducteur{% endblock %}
+
+{% block body %}
+    <h1>Conducteur</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ conducteur.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ conducteur.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ conducteur.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ conducteur.email }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ conducteur.ville }}</td>
+            </tr>
+            <tr>
+                <th>Code_postal</th>
+                <td>{{ conducteur.codePostal }}</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>{{ conducteur.age }}</td>
+            </tr>
+            <tr>
+                <th>Tel</th>
+                <td>{{ conducteur.tel }}</td>
+            </tr>
+            <tr>
+                <th>Numero_vol</th>
+                <td>{{ conducteur.numeroVol }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ conducteur.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Message</th>
+                <td>{{ conducteur.message }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_conducteur_index') }}">back to list</a>
+
+    <a href="{{ path('app_admin_conducteur_edit', {'id': conducteur.id}) }}">edit</a>
+
+    {{ include('admin_conducteur/_delete_form.html.twig') }}
+{% endblock %}

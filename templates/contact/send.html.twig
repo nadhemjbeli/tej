@@ -1,0 +1,59 @@
+{% extends 'contact_base.html.twig' %}
+{% block title %}
+{% endblock %}
+{% block body %}
+    <style>
+        input[type=text], input[type=number]{
+            background-color: rgba(3, 3, 3, 0.7);
+            border-color: white;
+            color: lightgrey;
+        }
+        input[type=text]:focus, input[type=number]:focus{
+            background-color: rgba(3, 3, 3, 0.7);
+            border-color: white;
+            color: lightgrey;
+        }
+        #contact_message{
+            background-color: rgba(3, 3, 3, 0.7);
+            border-color: white;
+            color: lightgrey;
+        }
+        label{
+            color: white;
+        }
+    </style>
+    <section id="r-get-in-touch">
+        <div class="r-get-in-touch">
+            <div class="container">
+                <div class="r-get-header">
+                    <span>CONTACTEZ-NOUS MAINTENANT</span>
+                    <br><span>EMAIL : reservation@tejrentcar.com </span>
+                    <h2>Restez <b>en contact.</b></h2>
+                </div>
+                <div class="r-get-form">
+                    {{ form_start(form) }}
+                    <div class="clearfix">
+                        {{ form_row(form.nom) }}
+                        {{ form_row(form.prenom) }}
+                    </div>
+                    <div class="clearfix">
+                        {{ form_row(form.email) }}
+                        {{ form_row(form.tel) }}
+                    </div>
+                    {{ form_row(form.sujet) }}
+                    {{ form_row(form.message) }}
+                    <div class="text-center">
+                        <button class="btn btn-full">{{ button_label|default('ENVOYER UN MESSAGE MAINTENANT') }}</button>
+                    </div>
+
+                    {{ form_end(form) }}
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3211.4489448508034!2d10.613415215278646!3d36.39833198003331!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd61f064d006a5%3A0x5fc60c817d7a1cb6!2sTej%20Rent%20Car!5e0!3m2!1sfr!2stn!4v1638223205572!5m2!1sfr!2stn"
+            style="border:0" width="100%" height="380" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+{% endblock %}

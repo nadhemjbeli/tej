@@ -69,15 +69,21 @@ class Conducteur
      */
     private $message;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Reservation::class, mappedBy="conducteur")
-     */
-    private $id_reserveation;
+//    /**
+//     * @ORM\OneToMany(targetEntity=Reservation::class, mappedBy="conducteur")
+//     */
+//    private $id_reserveation;
 
-    public function __construct()
-    {
-        $this->id_reserveation = new ArrayCollection();
-    }
+    /**
+     * @ORM\ManyToOne(targetEntity=Reservation::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $reservation_id;
+
+//    public function __construct()
+//    {
+//        $this->id_reserveation = new ArrayCollection();
+//    }
 
     public function getId(): ?int
     {
@@ -212,24 +218,36 @@ class Conducteur
         return $this->id_reserveation;
     }
 
-    public function addIdReserveation(Reservation $idReserveation): self
-    {
-        if (!$this->id_reserveation->contains($idReserveation)) {
-            $this->id_reserveation[] = $idReserveation;
-            $idReserveation->setConducteur($this);
-        }
+//    public function addIdReserveation(Reservation $idReserveation): self
+//    {
+//        if (!$this->id_reserveation->contains($idReserveation)) {
+//            $this->id_reserveation[] = $idReserveation;
+//            $idReserveation->setConducteur($this);
+//        }
+//
+//        return $this;
+//    }
+//
+//    public function removeIdReserveation(Reservation $idReserveation): self
+//    {
+//        if ($this->id_reserveation->removeElement($idReserveation)) {
+//            // set the owning side to null (unless already changed)
+//            if ($idReserveation->getConducteur() === $this) {
+//                $idReserveation->setConducteur(null);
+//            }
+//        }
+//
+//        return $this;
+//    }
 
-        return $this;
+    public function getReservationId(): ?Reservation
+    {
+        return $this->reservation_id;
     }
 
-    public function removeIdReserveation(Reservation $idReserveation): self
+    public function setReservationId(?Reservation $reservation_id): self
     {
-        if ($this->id_reserveation->removeElement($idReserveation)) {
-            // set the owning side to null (unless already changed)
-            if ($idReserveation->getConducteur() === $this) {
-                $idReserveation->setConducteur(null);
-            }
-        }
+        $this->reservation_id = $reservation_id;
 
         return $this;
     }

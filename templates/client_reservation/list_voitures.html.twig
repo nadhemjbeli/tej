@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ClientReservationController!{% endblock %}
+{% block title %}Voitures{% endblock %}
 
 {% block body %}
     <div class="r-slider-serach r-slider-serach-down form-search dark">
@@ -10,37 +10,37 @@
                 <h3>Trouvez la voiture qui vous convient chez<b> Tej Rent Car</b></h3>
             </div>
 
-            <form action="https://www.tejrentcar.com/voitures.php" method="post">
+            <form action="" method="post" name="form_reserv">
                 <div class="row row-inputs">
                     <div class="col-sm-6">
                         <div class="form-group has-icon has-label">
                             <label>Lieu de Prise</label>
                             <select class="form-control" id="lieu_prise" name="lieu_prise">
-                                <option value="0">A&eacute;roport Tunis Carthage</option>
-                                <option value="1">A&eacute;roport enfidha</option>
-                                <option value="2">A&eacute;roport monastir</option>
-                                <option value="3">A&eacute;roport Djerba</option>
-                                <option value="4">Tunis</option>
-                                <option value="5">Nabeul</option>
-                                <option value="6">Hammamet</option>
-                                <option value="7">Sousse</option>
-                                <option value="8">Sfax</option>
+                                <option value="Aéroport Tunis Carthage">A&eacute;roport Tunis Carthage</option>
+                                <option value="Aéroport enfidha">A&eacute;roport enfidha</option>
+                                <option value="Aéroport monastir">A&eacute;roport monastir</option>
+                                <option value="Aéroport Djerba">A&eacute;roport Djerba</option>
+                                <option value="Tunis">Tunis</option>
+                                <option value="Nabeul">Nabeul</option>
+                                <option value="Hammamet">Hammamet</option>
+                                <option value="Sousse">Sousse</option>
+                                <option value="Sfax">Sfax</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group has-icon has-label">
                             <label>Lieu de Prise</label>
-                            <select class="form-control" id="lieu_prise" name="lieu_prise">
-                                <option value="0">A&eacute;roport Tunis Carthage</option>
-                                <option value="1">A&eacute;roport enfidha</option>
-                                <option value="2">A&eacute;roport monastir</option>
-                                <option value="3">A&eacute;roport Djerba</option>
-                                <option value="4">Tunis</option>
-                                <option value="5">Nabeul</option>
-                                <option value="6">Hammamet</option>
-                                <option value="7">Sousse</option>
-                                <option value="8">Sfax</option>
+                            <select class="form-control" id="lieu_reprise" name="lieu_reprise">
+                                <option value="Aéroport Tunis Carthage">A&eacute;roport Tunis Carthage</option>
+                                <option value="Aéroport enfidha">A&eacute;roport enfidha</option>
+                                <option value="Aéroport monastir">A&eacute;roport monastir</option>
+                                <option value="Aéroport Djerba">A&eacute;roport Djerba</option>
+                                <option value="Tunis">Tunis</option>
+                                <option value="Nabeul">Nabeul</option>
+                                <option value="Hammamet">Hammamet</option>
+                                <option value="Sousse">Sousse</option>
+                                <option value="Sfax">Sfax</option>
                             </select>
                         </div>
                     </div>
@@ -58,11 +58,11 @@
                         <div class="form-group has-icon has-label date" data-target-input="nearest">
                             <label>Heure de prise</label>
                             <select class="form-control" id="heure_debut" name="heure_debut">
-                                {% for i in range(0, 25) %}
+                                {% for i in range(0, 23) %}
                                     {% if i <= 9 %}
-                                        <option value="0{{ i }}h:00">00h:00</option>
+                                        <option value="0{{ i }}h:00">0{{ i }}h:00</option>
                                     {% else %}
-                                        <option value="{{ i }}h:00">00h:00</option>
+                                        <option value="{{ i }}h:00">{{ i }}h:00</option>
                                     {% endif %}
                                 {% endfor %}
 
@@ -83,30 +83,13 @@
                         <div class="form-group has-icon has-label date" data-target-input="nearest">
                             <label>Heure de reprise</label>
                             <select class="form-control" id="heure_fin" name="heure_fin">
-                                <option value="00h:00">00h:00</option>
-                                <option value="01h:00">01h:00</option>
-                                <option value="02h:00">02h:00</option>
-                                <option value="03h:00">03h:00</option>
-                                <option value="04h:00">04h:00</option>
-                                <option value="05h:00">05h:00</option>
-                                <option value="06h:00">06h:00</option>
-                                <option value="07h:00">07h:00</option>
-                                <option value="08h:00">08h:00</option>
-                                <option value="09h:00">09h:00</option>
-                                <option value="10h:00">10h:00</option>
-                                <option value="11h:00">11h:00</option>
-                                <option value="12h:00">12h:00</option>
-                                <option value="13h:00">13h:00</option>
-                                <option value="14h:00">14h:00</option>
-                                <option value="15h:00">15h:00</option>
-                                <option value="16h:00">16h:00</option>
-                                <option value="17h:00">17h:00</option>
-                                <option value="18h:00">18h:00</option>
-                                <option value="19h:00">19h:00</option>
-                                <option value="20h:00">20h:00</option>
-                                <option value="21h:00">21h:00</option>
-                                <option value="22h:00">22h:00</option>
-                                <option value="23h:00">23h:00</option>
+                                {% for i in range(0, 23) %}
+                                    {% if i <= 9 %}
+                                        <option value="0{{ i }}h:00">0{{ i }}h:00</option>
+                                    {% else %}
+                                        <option value="{{ i }}h:00">{{ i }}h:00</option>
+                                    {% endif %}
+                                {% endfor %}
                             </select>
                         </div>
                     </div>
@@ -191,9 +174,9 @@
                                         </button>
                                     </div>
                                     <br>
-                                    <div class="inner col-12 clearfix">
+{#                                    <div class="inner col-12 clearfix">#}
                                         {# <button type="submit" class="btn m-auto d-block float-right btn-full">Chercher</button> #}
-                                    </div>
+{#                                    </div>#}
                                 </div>
                             </form>
 
@@ -274,8 +257,12 @@
                                                     </div>
                                                     <div class="r-offer-rewst-this">
                                                         {# <span class="text-uppercase"><a href="#" onclick="document.getElementById('book1').submit();">Réserver cette voiture</a></span> #}
-                                                        <span class="text-uppercase"><a
-                                                                    href="">Réserver cette voiture</a></span>
+                                                        <span class="text-uppercase">
+                                                            <a
+                                                                    onclick="sendVoiture({{ voiture.id }}, '{{ voiture.marque }}')"
+                                                                    id="{{ voiture.marque }}"
+                                                                    href="#"
+                                                            >Réserver cette voiture</a></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -293,21 +280,51 @@
         </div>
     </section>
     <script>
-        $(function () {
-            $('.custom-options').selectric({
-                optionsItemBuilder: function (itemData) {
-                    return itemData.value.length ? '<span class="ico ico-' + itemData.value + '"></span>' + itemData.text : itemData.text;
-                }
-            });
+        // $(function () {
+        //     $('.custom-options').selectric({
+        //         optionsItemBuilder: function (itemData) {
+        //             return itemData.value.length ? '<span class="ico ico-' + itemData.value + '"></span>' + itemData.text : itemData.text;
+        //         }
+        //     });
+        //
+        //     $('.custom-label').selectric({
+        //         labelBuilder: function (currItem) {
+        //             return '<strong><em>' + currItem.text + '</em></strong>';
+        //         }
+        //     });
+        //
+        //     $('select').selectric();
+        // });
 
-            $('.custom-label').selectric({
-                labelBuilder: function (currItem) {
-                    return '<strong><em>' + currItem.text + '</em></strong>';
-                }
-            });
+        function sendVoiture(id, marque) {
 
-            $('select').selectric();
-        });
+            let lieu_prise = document.getElementById('lieu_prise').value;
+            let lieu_reprise = document.getElementById('lieu_reprise').value;
+            let date_prise = $('#datetimepicker2').data("date");
+            let date_reprise = $('#datetimepicker3').data("date");
+            let heure_debut = document.getElementById('heure_debut').value;
+            let heure_fin = document.getElementById('heure_debut').value;
+            {#$.ajax({#}
+            {#    url: "{{ path('app_get_reservation') }}",#}
+            {#    method: 'GET',#}
+            {#    data: {#}
+            {#        id: id,#}
+            {#        lieu_prise: lieu_prise#}
+            {#    },#}
+            {#    success: function(data) {#}
+            {#        // console.log(data)#}
+            {#    }#}
+
+            {#});#}
+
+            // console.log(marque);
+            // console.log(id);
+            // console.log($('#datetimepicker2').data("date"));
+            document.getElementById(marque).href="{{ path('app_get_reservation') }}?id="+id
+                +"&lieu_prise="+lieu_prise+"&lieu_reprise="+lieu_reprise+"&date_prise="+date_prise
+                +"&date_reprise="+date_reprise+"&heure_debut="+heure_debut+"&heure_fin="+heure_fin;
+
+        }
 
 
     </script>

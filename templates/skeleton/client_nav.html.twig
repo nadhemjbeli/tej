@@ -6,7 +6,7 @@
                 <div class="row clearfix">
                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12">
                         <div class="r-logo">
-                            <a href="{{ path('app_home') }}" class="d-inline-block"><img src="assets/images/logo.png"
+                            <a href="{{ path('app_home') }}" class="d-inline-block"><img src="{{ asset('assets/images/logo.png') }}"
                                                                              class="img-fluid d-block" alt=""></a>
                         </div>
                         <a href="javaScript:void(0)" class="menu-icon"> <i class="fa fa-bars"></i> </a>
@@ -16,8 +16,8 @@
                             <a href="#" target="_blank"> <img src="{{ asset('assets/images/icon-tel.png') }}" alt=''/> <span
                                         class="tel">23 345 525</span></a>
                             <a href="https://api.whatsapp.com/send?phone=21629345708" target="_blank"> <img
-                                        src="assets/images/icon-lock.png" alt=''/><img
-                                        src="assets/images/icon-viber.png" alt=''/>
+                                        src="{{ asset('assets/images/icon-lock.png') }}" alt=''/><img
+                                        src="{{ asset('assets/images/icon-viber.png') }}" alt=''/>
                                 <span>21 548 479<br>29 345 708</span></a>
                             <div class="r-search-wrapper">
                                 <div class="r-search-inner">
@@ -52,7 +52,7 @@
                                         <a href="taxi-tunisie.html">Taxi Tunisie</a>
                                     </li>
                                     <li>
-                                        <a href="contact.html">Contact</a>
+                                        <a href="{{ path('app_contact_send') }}">Contact</a>
                                     </li>
                                     <li>
                                         <a href="blog/index.html" class="blog">Blog</a>
