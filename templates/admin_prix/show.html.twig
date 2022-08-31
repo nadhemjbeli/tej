@@ -1,0 +1,70 @@
+{% extends 'admin_base.html.twig' %}
+
+{% block title %}Prix{% endblock %}
+
+{% block body %}
+    <h1>Prix</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ prix.id }}</td>
+            </tr>
+            <tr>
+                <th>DateDebutS1</th>
+                <td>{{ prix.DateDebutS1 ? prix.DateDebutS1|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateFinS1</th>
+                <td>{{ prix.DateFinS1 ? prix.DateFinS1|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>PrixS1</th>
+                <td>{{ prix.PrixS1 }}</td>
+            </tr>
+            <tr>
+                <th>DateDebutS2</th>
+                <td>{{ prix.DateDebutS2 ? prix.DateDebutS2|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateFinS2</th>
+                <td>{{ prix.DateFinS2 ? prix.DateFinS2|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>PrixS2</th>
+                <td>{{ prix.PrixS2 }}</td>
+            </tr>
+            <tr>
+                <th>DateDebutS3</th>
+                <td>{{ prix.DateDebutS3 ? prix.DateDebutS3|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateFinS3</th>
+                <td>{{ prix.DateFinS3 ? prix.DateFinS3|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>PrixS3</th>
+                <td>{{ prix.PrixS3 }}</td>
+            </tr>
+            <tr>
+                <th>DateDebutS4</th>
+                <td>{{ prix.DateDebutS4 ? prix.DateDebutS4|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateFinS4</th>
+                <td>{{ prix.DateFinS4 ? prix.DateFinS4|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>PrixS4</th>
+                <td>{{ prix.PrixS4 }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_prix_index') }}">back to list</a>
+
+    <a href="{{ path('app_admin_prix_edit', {'id': prix.id}) }}">edit</a>
+
+    {{ include('admin_prix/_delete_form.html.twig') }}
+{% endblock %}

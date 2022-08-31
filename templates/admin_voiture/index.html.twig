@@ -32,7 +32,7 @@
                 <td>{{ voiture.categorie }}</td>
                 <td>{{ voiture.agence }}</td>
                 <td>
-                    <img src="{{ asset('admin/img/voiture/'~voiture.image) }}" class="img-fluid d-block m-auto" alt="" width="50px">
+                    <img src="{{ asset('admin/img/voiture/'~voiture.image) }}" class="img-fluid d-block m-auto" alt="{{ voiture.marque }}" width="50px">
                 </td>
                 <td>
                     <a href="{{ path('app_admin_voiture_show', {'id': voiture.id}) }}">show</a>

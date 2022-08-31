@@ -15,6 +15,7 @@
                 <th>Date_reprise</th>
                 <th>Heure_prise</th>
                 <th>Heure_reprise</th>
+                <th>voiture</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -28,6 +29,11 @@
                 <td>{{ reservation.dateReprise ? reservation.dateReprise|date('Y-m-d') : '' }}</td>
                 <td>{{ reservation.heurePrise }}</td>
                 <td>{{ reservation.heureReprise }}</td>
+                <td>
+                    <a href="{{ path('app_admin_voiture_show', {'id': reservation.idVoiture.id}) }}">
+                        {{ reservation.idVoiture.marque }}
+                    </a>
+                </td>
                 <td>
                     <a href="{{ path('app_reservation_show', {'id': reservation.id}) }}">show</a>
                     <a href="{{ path('app_reservation_edit', {'id': reservation.id}) }}">edit</a>

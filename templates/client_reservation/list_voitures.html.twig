@@ -1,8 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_no_jquery.html.twig' %}
 
 {% block title %}Voitures{% endblock %}
 
 {% block body %}
+    <style>
+        #datetimepicker2, #datetimepicker3{
+            color-scheme: dark;
+        }
+    </style>
     <div class="r-slider-serach r-slider-serach-down form-search dark">
         <div class="container">
             <div class="r-top-form-title animated fadeInUp">
@@ -45,13 +50,11 @@
                         </div>
                     </div>
                     <div class="col-sm-3">
-                        <div class="form-group has-icon has-label label" id="datetimepicker2"
+                        <div class="form-group has-icon has-label label" id="txtDate1"
                              data-target-input="nearest">
                             <label>Date de Prise</label>
-                            <input id="date_debut" name="date_debut" type="text" class="form-control datepicker"
-                                   data-toggle="datetimepicker" data-target="#datetimepicker2" placeholder="dd-mm-yyyy"
-                                   value="22-07-2022">
-                            <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
+                            <input id="datetimepicker2" name="date_debut" type="date" class="form-control datepicker">
+{#                            <span class="form-control-icon"><i class="fa fa-calendar"></i></span>#}
                         </div>
                     </div>
                     <div class="col-sm-3">
@@ -70,13 +73,11 @@
                         </div>
                     </div>
                     <div class="col-sm-3">
-                        <div class="form-group has-icon has-label label" id="datetimepicker3"
+                        <div class="form-group has-icon has-label label" id="txtDate2"
                              data-target-input="nearest">
                             <label>Date de reprise</label>
-                            <input id="date_fin" name="date_fin" type="text" class="form-control datepicker"
-                                   data-toggle="datetimepicker" data-target="#datetimepicker3" placeholder="dd-mm-yyyy"
-                                   value="25.07.2022">
-                            <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
+                            <input id="datetimepicker3" name="date_fin" type="date" class="form-control datepicker">
+{#                            <span class="form-control-icon"><i class="fa fa-calendar"></i></span>#}
                         </div>
                     </div>
                     <div class="col-sm-3">
@@ -279,22 +280,30 @@
             </div>
         </div>
     </section>
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
     <script>
-        // $(function () {
-        //     $('.custom-options').selectric({
-        //         optionsItemBuilder: function (itemData) {
-        //             return itemData.value.length ? '<span class="ico ico-' + itemData.value + '"></span>' + itemData.text : itemData.text;
-        //         }
-        //     });
-        //
-        //     $('.custom-label').selectric({
-        //         labelBuilder: function (currItem) {
-        //             return '<strong><em>' + currItem.text + '</em></strong>';
-        //         }
-        //     });
-        //
-        //     $('select').selectric();
-        // });
+
+
+        $("#datetimepicker2").on("change", function() {
+            // console.log("Got change event from field");
+            var selected = $(this).val();
+            selected = new Date(Date.parse(selected));
+            selected.setDate(selected.getDate() + 2)
+            var month = selected.getMonth() + 1;
+            var day = selected.getDate();
+            var year = selected.getFullYear();
+            if(month < 10)
+                month = '0' + month.toString();
+            if(day < 10)
+                day = '0' + (day).toString();
+            var maxDate2 = year + '-' + month + '-' + day;
+            $('#datetimepicker3').attr('min', maxDate2).attr('value', maxDate2);
+            console.log(selected);
+            // $('#txtDate2').attr('min', maxDate2).attr('value', maxDate2);
+        });
 
         function sendVoiture(id, marque) {
 
@@ -303,27 +312,10 @@
             let date_prise = $('#datetimepicker2').data("date");
             let date_reprise = $('#datetimepicker3').data("date");
             let heure_debut = document.getElementById('heure_debut').value;
-            let heure_fin = document.getElementById('heure_debut').value;
-            {#$.ajax({#}
-            {#    url: "{{ path('app_get_reservation') }}",#}
-            {#    method: 'GET',#}
-            {#    data: {#}
-            {#        id: id,#}
-            {#        lieu_prise: lieu_prise#}
-            {#    },#}
-            {#    success: function(data) {#}
-            {#        // console.log(data)#}
-            {#    }#}
-
-            {#});#}
-
-            // console.log(marque);
-            // console.log(id);
-            // console.log($('#datetimepicker2').data("date"));
+            let heure_fin = document.getElementById('heure_fin').value;
             document.getElementById(marque).href="{{ path('app_get_reservation') }}?id="+id
                 +"&lieu_prise="+lieu_prise+"&lieu_reprise="+lieu_reprise+"&date_prise="+date_prise
                 +"&date_reprise="+date_reprise+"&heure_debut="+heure_debut+"&heure_fin="+heure_fin;
-
         }
 
 

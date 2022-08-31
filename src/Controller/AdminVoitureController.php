@@ -54,6 +54,7 @@ class AdminVoitureController extends AbstractController
                     // ... handle exception if something happens during file upload
                 }
                 $voiture->setImage($newFilename);
+                $voiture->setCode($voiture->getMarque().' '.uniqid());
                 $voitureRepository->add($voiture, true);
 
                 return $this->redirectToRoute('app_admin_voiture_index', [], Response::HTTP_SEE_OTHER);
@@ -71,6 +72,7 @@ class AdminVoitureController extends AbstractController
      */
     public function show(Voiture $voiture): Response
     {
+//        dd(uniqid());
         return $this->render('admin_voiture/show.html.twig', [
             'voiture' => $voiture,
         ]);

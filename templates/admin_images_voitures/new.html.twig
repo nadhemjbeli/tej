@@ -1,0 +1,11 @@
+{% extends 'admin_base.html.twig' %}
+
+{% block title %}New ImagesVoitures{% endblock %}
+
+{% block body %}
+    <h1>Create new ImagesVoitures</h1>
+
+    {{ include('admin_images_voitures/_form.html.twig') }}
+
+    <a href="{{ path('app_admin_images_voitures_index') }}">back to list</a>
+{% endblock %}

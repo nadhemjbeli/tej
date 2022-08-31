@@ -1,39 +1,56 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Navbar w/ text</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 {% if app.user %}
-                <li class="nav-item">
-                    <a class="nav-link {% if app.request.get('_route') == 'app_admin_voiture_index' %}active{% endif %}" aria-current="page" href="{{ path('app_admin_voiture_index') }}">Voiture</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {% if app.request.get('_route') == 'app_reservation_index' %}active{% endif %}" href="{{ path('app_reservation_index') }}">Reservation</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {% if app.request.get('_route') == 'app_admin_conducteur_index' %}active{% endif %}" href="{{ path('app_admin_conducteur_index') }}">Conducteur</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {% if app.request.get('_route') == 'app_contact_index' %}active{% endif %}" href="{{ path('app_contact_index') }}">Contact</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if app.request.get('_route') == 'app_admin_marque_index' %}active{% endif %}"
+                           aria-current="page" href="{{ path('app_admin_marque_index') }}">Marque</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if app.request.get('_route') == 'app_admin_voiture_index' %}active{% endif %}"
+                           aria-current="page" href="{{ path('app_admin_voiture_index') }}">Voiture</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if app.request.get('_route') == 'app_admin_images_voitures_index' %}active{% endif %}"
+                           href="{{ path('app_admin_images_voitures_index') }}">Images Voitures</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if app.request.get('_route') == 'app_admin_prix_index' %}active{% endif %}"
+                           href="{{ path('app_admin_prix_index') }}">Prix Voiture</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if app.request.get('_route') == 'app_reservation_index' %}active{% endif %}"
+                           href="{{ path('app_reservation_index') }}">Reservation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if app.request.get('_route') == 'app_admin_conducteur_index' %}active{% endif %}"
+                           href="{{ path('app_admin_conducteur_index') }}">Conducteur</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if app.request.get('_route') == 'app_contact_index' %}active{% endif %}"
+                           href="{{ path('app_contact_index') }}">Contact</a>
+                    </li>
                 {% endif %}
             </ul>
             <ul class="navbar-nav mb-2 mb-lg-0 float-right">
                 {% if app.user %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
+                    </li>
 
                 {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_login') }}">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_register') }}">Register</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_login') }}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_register') }}">Register</a>
+                    </li>
                 {% endif %}
             </ul>
         </div>

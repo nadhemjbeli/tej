@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20220820031409 extends AbstractMigration
+final class Version20220824225047 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,12 +20,13 @@ final class Version20220820031409 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE user DROP cin, DROP tel, DROP nom, DROP prenom');
+        $this->addSql('CREATE TABLE images_voitures (id INT AUTO_INCREMENT NOT NULL, voiture_id INT DEFAULT NULL, image VARCHAR(255) NOT NULL, INDEX IDX_287B4D71181A8BA (voiture_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('ALTER TABLE images_voitures ADD CONSTRAINT FK_287B4D71181A8BA FOREIGN KEY (voiture_id) REFERENCES voiture (id)');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE user ADD cin VARCHAR(255) NOT NULL, ADD tel INT NOT NULL, ADD nom VARCHAR(255) NOT NULL, ADD prenom VARCHAR(255) NOT NULL');
+        $this->addSql('DROP TABLE images_voitures');
     }
 }

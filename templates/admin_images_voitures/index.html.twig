@@ -1,0 +1,37 @@
+{% extends 'admin_base.html.twig' %}
+
+{% block title %}ImagesVoitures index{% endblock %}
+
+{% block body %}
+    <h1>ImagesVoitures index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Image</th>
+                <th>voiture_id</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for images_voiture in images_voitures %}
+            <tr>
+                <td>{{ images_voiture.id }}</td>
+                <td><img src="{{ asset('admin/img/images_voitures/'~images_voiture.image) }}" alt="{{ images_voiture.voiture }}" width="50px"></td>
+                <td><a href="{{ path('app_admin_voiture_show', {'id': images_voiture.id}) }}">{{ images_voiture.voiture }}</a></td>
+                <td>
+                    <a href="{{ path('app_admin_images_voitures_show', {'id': images_voiture.id}) }}">show</a>
+                    <a href="{{ path('app_admin_images_voitures_edit', {'id': images_voiture.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_images_voitures_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'admin_base.html.twig' %}
+
+{% block title %}New Prix{% endblock %}
+
+{% block body %}
+    <h1>Create new Prix</h1>
+
+    {{ include('admin_prix/_form.html.twig') }}
+
+    <a href="{{ path('app_admin_prix_index') }}">back to list</a>
+{% endblock %}
