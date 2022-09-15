@@ -82,12 +82,12 @@ class Voiture
      */
     private $prix;
 
-    private $prixActuel;
+    private $prixActuel=0;
 
     public function __construct()
     {
         $this->imagesVoitures = new ArrayCollection();
-        $this->setPrixActuel();
+//        $this->setPrixActuel();
     }
 
     public function getId(): ?int
@@ -302,22 +302,24 @@ class Voiture
         $dateFS4
 //                ->add(new DateInterval('P1Y'))
             ->sub(new DateInterval('P1D'));
+        $prixActuel = $this->getPrixJour();
         if ($currentDate >= $dateDS1 && $currentDate <= $dateFS1){
-            $this->prixActuel = $this->getPrix()->getPrixS1();
+            $prixActuel = $this->getPrix()->getPrixS1();
 //            dd('true s1: ',$dS1, $this->getPrix()->getPrixS1(),$dateFS1);
         }
         else if ($currentDate >= $dateDS2 && $currentDate <= $dateFS2){
-            $this->prixActuel = $this->getPrix()->getPrixS2();
+            $prixActuel = $this->getPrix()->getPrixS2();
 //            dd('true s2: ',$dS2, $this->getPrix()->getPrixS2(),$dateFS2);
         }
         else if ($currentDate >= $dateDS3 && $currentDate <= $dateFS3){
-            $this->prixActuel = $this->getPrix()->getPrixS3();
+            $prixActuel = $this->getPrix()->getPrixS3();
 //            dd('true s3: ',$dS3, $this->getPrix()->getPrixS3(),$dateFS3);
         }
         else if ($currentDate >= $dateDS4 && $currentDate <= $dateFS4){
-            $this->prixActuel = $this->getPrix()->getPrixS4();
+            $prixActuel = $this->getPrix()->getPrixS4();
 //            dd('true s4: ',$dS4, $this->getPrix()->getPrixS4(),$dateFS4);
         }
+        $this->prixActuel = $prixActuel;
 
         return $this;
     }

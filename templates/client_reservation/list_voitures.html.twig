@@ -4,7 +4,7 @@
 
 {% block body %}
     <style>
-        #datetimepicker2, #datetimepicker3{
+        #datetimepicker2, #datetimepicker3 {
             color-scheme: dark;
         }
     </style>
@@ -54,7 +54,7 @@
                              data-target-input="nearest">
                             <label>Date de Prise</label>
                             <input id="datetimepicker2" name="date_debut" type="date" class="form-control datepicker">
-{#                            <span class="form-control-icon"><i class="fa fa-calendar"></i></span>#}
+                            {# <span class="form-control-icon"><i class="fa fa-calendar"></i></span> #}
                         </div>
                     </div>
                     <div class="col-sm-3">
@@ -77,7 +77,7 @@
                              data-target-input="nearest">
                             <label>Date de reprise</label>
                             <input id="datetimepicker3" name="date_fin" type="date" class="form-control datepicker">
-{#                            <span class="form-control-icon"><i class="fa fa-calendar"></i></span>#}
+                            {# <span class="form-control-icon"><i class="fa fa-calendar"></i></span> #}
                         </div>
                     </div>
                     <div class="col-sm-3">
@@ -94,24 +94,74 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-lg-12 col-md-12 col-sm-12">
-                        <div class="r-car-filter-area">
 
-                        </div>
-
-
-                    </div>
-                    <div class="col-12 mb-3">
-                        <hr>
-                    </div>
-                    <div class="inner col-12 clearfix">
-                        <button type="submit" class="btn m-auto d-block float-right btn-full">RESERVER VOITURE</button>
-                    </div>
 
                 </div>
             </form>
+
         </div>
+
     </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="r-car-filter-area">
+            <form action="" method="post">
+                <div class="row">
+
+                    <div class=" col-lg-3 col-md-12 col-sm-12">
+                        <div class="selectric-wrapper selectric-custom-select selectric-filter-select selectric-below"></div>
+                        <br>
+                        <select class="form-select filter-select" data-tag="transmission" id="get_value"
+                                name="_transmission">
+                            <option disabled {{ not search_carburant?'selected' }}>Transmission</option>
+                            {% for transmission in transmissions %}
+                                <option value="{{ transmission }}" {{ search_transmission==transmission?'selected':'' }}>{{ transmission }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class=" col-lg-3 col-md-12 col-sm-12">
+                        <br>
+                        <select class="form-select" aria-label="Default select example"
+                                name="_categorie">
+                            <option value="" disabled="disabled" {{ not search_categorie?'selected' }}>Catégorie
+                            </option>
+                            {% for categorie in categories %}
+                                <option value="{{ categorie }}" {{ search_categorie==categorie?'selected':'' }}>{{ categorie }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class=" col-lg-3 col-md-12 col-sm-12">
+                        <br>
+                        <select class="form-select" aria-label="Default select example"
+                                name="_carburant">
+                            <option value="" disabled="disabled" {{ not search_carburant?'selected' }}>Carburant
+                            </option>
+                            {% for carburant in carburants %}
+                                <option value="{{ carburant }}" {{ search_carburant==carburant?'selected':'' }}>{{ carburant }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class=" col-lg-3 col-md-12 col-sm-12">
+                        <br>
+                        <button type="submit" class="btn m-auto d-block float-right btn-full">
+                            CHERCHER
+                        </button>
+                    </div>
+                    {# <div class="inner col-12 clearfix"> #}
+                    {# <button type="submit" class="btn m-auto d-block float-right btn-full">Chercher</button> #}
+                    {# </div> #}
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+    {# <div class="inner col-12 clearfix"> #}
+    {# <button type="submit" class="btn m-auto d-block float-right btn-full">CHERCHER</button> #}
+    {# </div> #}
+    {# <div class="col-12 mb-3"> #}
+    {# <hr> #}
+    {# </div> #}
 
     <section class="r-car-showcase-wrapper">
         <div class="r-best-vehicles">
@@ -138,47 +188,7 @@
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="r-car-filter-area">
                             <form action="" method="post" name="search_form">
-                                <div class="row">
 
-                                    <div class=" col-lg-3 col-md-12 col-sm-12">
-                                        <div class="selectric-wrapper selectric-custom-select selectric-filter-select selectric-below"></div>
-                                        <br>
-                                        <select class="form-select filter-select" data-tag="transmission" id="get_value"
-                                                name="_transmission">
-                                            <option disabled selected>Transmission</option>
-                                            <option value="Automatique">Automatique</option>
-                                            <option value="Manuelle">Manuelle</option>
-                                        </select>
-                                    </div>
-                                    <div class=" col-lg-3 col-md-12 col-sm-12">
-                                        <br>
-                                        <select class="form-select" aria-label="Default select example"
-                                                name="_categorie">
-                                            <option value="" disabled="disabled" selected>Catégorie</option>
-                                            {% for categorie in categories %}
-                                                <option value="{{ categorie }}">{{ categorie }}</option>
-                                            {% endfor %}
-                                        </select>
-                                    </div>
-                                    <div class=" col-lg-3 col-md-12 col-sm-12">
-                                        <br>
-                                        <select class="form-select" aria-label="Default select example"
-                                                name="_carburant">
-                                            <option value="" disabled="disabled" selected>Carburant</option>
-                                            {% for carburant in carburants %}
-                                                <option value="{{ carburant }}">{{ carburant }}</option>
-                                            {% endfor %}
-                                        </select>
-                                    </div>
-                                    <div class=" col-lg-3 col-md-12 col-sm-12">
-                                        <button type="submit" class="btn m-auto d-block float-right btn-full">Chercher
-                                        </button>
-                                    </div>
-                                    <br>
-{#                                    <div class="inner col-12 clearfix">#}
-                                        {# <button type="submit" class="btn m-auto d-block float-right btn-full">Chercher</button> #}
-{#                                    </div>#}
-                                </div>
                             </form>
 
                         </div>
@@ -236,7 +246,13 @@
                                                     <div class="r-best-offer-content">
                                                         <a href="booking0e5f.html?vhid=1"><b>{{ voiture.marque }}</b> {{ voiture.categorie }}
                                                         </a>
-                                                        <p><b>190 €</b> /Jour</p>
+                                                        <p><b><span class="prixActuel">
+                                                                    {{ voiture.prixActuel }}
+                                                                </span> €</b> /Jour</p>
+                                                        <p>prix total: <b><span class="prixTotal"
+                                                                                id="{{ voiture.marque }}{{ voiture.id }}">
+
+                                                                </span> €</b></p>
 
 
                                                         <ul class="pl-0 mb-0">
@@ -260,8 +276,8 @@
                                                         {# <span class="text-uppercase"><a href="#" onclick="document.getElementById('book1').submit();">Réserver cette voiture</a></span> #}
                                                         <span class="text-uppercase">
                                                             <a
-                                                                    onclick="sendVoiture({{ voiture.id }}, '{{ voiture.marque }}')"
-                                                                    id="{{ voiture.marque }}"
+                                                                    onclick="sendVoiture('{{ voiture.id }}{{ voiture.marque }}', '{{ voiture.marque }}{{ voiture.id }}', {{ voiture.id }})"
+                                                                    id="{{ voiture.id }}{{ voiture.marque }}"
                                                                     href="#"
                                                             >Réserver cette voiture</a></span>
                                                     </div>
@@ -287,36 +303,94 @@
     <script>
 
 
-        $("#datetimepicker2").on("change", function() {
+        $("#datetimepicker2").on("change", function () {
             // console.log("Got change event from field");
-            var selected = $(this).val();
+            var date_prise = $('#datetimepicker2');
+            var date_reprise = $('#datetimepicker3');
+            var selected = date_prise.val();
+            var selected_val = new Date(Date.parse(selected));
             selected = new Date(Date.parse(selected));
+            var date_reprise_val = new Date(Date.parse(date_reprise.val()));
             selected.setDate(selected.getDate() + 2)
             var month = selected.getMonth() + 1;
             var day = selected.getDate();
             var year = selected.getFullYear();
-            if(month < 10)
+            if (month < 10)
                 month = '0' + month.toString();
-            if(day < 10)
+            if (day < 10)
                 day = '0' + (day).toString();
             var maxDate2 = year + '-' + month + '-' + day;
-            $('#datetimepicker3').attr('min', maxDate2).attr('value', maxDate2);
-            console.log(selected);
+            date_prise.attr('value', date_prise.val())
+            date_reprise.attr('min', maxDate2);
+            if (selected_val >= date_reprise_val) {
+                date_reprise.attr('value', maxDate2);
+                date_reprise_val = new Date(Date.parse(date_reprise.val()));
+            }
+            var difference = date_reprise_val.getTime() - selected_val.getTime();
+            var jours = difference / (1000 * 60 * 60 * 24)
+            prixActuels = document.getElementsByClassName('prixActuel');
+            prixTotals = document.getElementsByClassName('prixTotal');
+            for (let i = 0; i < prixActuels.length; i++) {
+                let prixTotal = prixActuels[i].innerHTML * jours;
+
+                // console.log(jours);
+                // console.log();
+                // console.log(jours * prix);
+                prixTotals[i].innerHTML = prixTotal.toString();
+            }
+
+            // console.log(date_prise.val());
+            // console.log(date_reprise.val());
+            // console.log(date_reprise_val.getDate()-selected.getDate());
+
             // $('#txtDate2').attr('min', maxDate2).attr('value', maxDate2);
         });
 
-        function sendVoiture(id, marque) {
+        $("#datetimepicker3").on("change", function () {
+            var date_prise = $('#datetimepicker2');
+            var date_reprise = $('#datetimepicker3');
+            var date_prise_val = new Date(Date.parse(date_prise.val()));
+            var date_reprise_val = new Date(Date.parse(date_reprise.val()));
+            var difference = date_reprise_val.getTime() - date_prise_val.getTime();
+            var jours = difference / (1000 * 60 * 60 * 24)
+            var prixActuels = document.getElementsByClassName('prixActuel');
+            var prixTotals = document.getElementsByClassName('prixTotal');
+            for (let i = 0; i < prixActuels.length; i++) {
+                let prixTotal = prixActuels[i].innerHTML * jours;
+
+                // console.log(jours);
+                // console.log();
+                // console.log(prixTotal);
+                prixTotals[i].innerHTML = prixTotal.toString();
+            }
+
+        });
+
+
+        function sendVoiture(codehref, code, id) {
+            let prix_total = document.getElementById(code).innerHTML;
+            console.log(prix_total);
+            console.log(codehref);
 
             let lieu_prise = document.getElementById('lieu_prise').value;
             let lieu_reprise = document.getElementById('lieu_reprise').value;
-            let date_prise = $('#datetimepicker2').data("date");
-            let date_reprise = $('#datetimepicker3').data("date");
+            let date_prise = $('#datetimepicker2').val();
+            let date_reprise = $('#datetimepicker3').val();
             let heure_debut = document.getElementById('heure_debut').value;
             let heure_fin = document.getElementById('heure_fin').value;
-            document.getElementById(marque).href="{{ path('app_get_reservation') }}?id="+id
-                +"&lieu_prise="+lieu_prise+"&lieu_reprise="+lieu_reprise+"&date_prise="+date_prise
-                +"&date_reprise="+date_reprise+"&heure_debut="+heure_debut+"&heure_fin="+heure_fin;
+             link = "{{ path('app_get_reservation') }}?id=" + id
+                + "&lieu_prise=" + lieu_prise + "&lieu_reprise=" + lieu_reprise + "&date_prise=" + date_prise
+                + "&date_reprise=" + date_reprise + "&heure_debut=" + heure_debut + "&heure_fin=" + heure_fin
+                + "&prix_total=" + prix_total;
+            console.log(link);
+            document.getElementById(codehref).href = link;
         }
+
+        // let date_prise = document.getElementById('datetimepicker2');
+        // let date_reprise = document.getElementById('datetimepicker3');
+        // let jours = date_reprise - date_prise;
+        // prixActuels = document.getElementsByClassName('prixActuel');
+        // prixTotals = document.getElementsByClassName('prixTotal');
 
 
     </script>

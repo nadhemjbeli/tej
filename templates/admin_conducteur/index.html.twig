@@ -1,53 +1,71 @@
-{% extends 'admin_base.html.twig' %}
+{% extends 'base_back.html.twig' %}
 
 {% block title %}Conducteur index{% endblock %}
 
 {% block body %}
     <h1>Conducteur index</h1>
+    <div class="row justify-content-center">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Email</th>
-                <th>Ville</th>
-                <th>Code_postal</th>
-                <th>Age</th>
-                <th>Tel</th>
-                <th>Numero_vol</th>
-                <th>Adresse</th>
-                <th>Message</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for conducteur in conducteurs %}
-            <tr>
-                <td>{{ conducteur.id }}</td>
-                <td>{{ conducteur.nom }}</td>
-                <td>{{ conducteur.prenom }}</td>
-                <td>{{ conducteur.email }}</td>
-                <td>{{ conducteur.ville }}</td>
-                <td>{{ conducteur.codePostal }}</td>
-                <td>{{ conducteur.age }}</td>
-                <td>{{ conducteur.tel }}</td>
-                <td>{{ conducteur.numeroVol }}</td>
-                <td>{{ conducteur.adresse }}</td>
-                <td>{{ conducteur.message }}</td>
-                <td>
-                    <a href="{{ path('app_admin_conducteur_show', {'id': conducteur.id}) }}">show</a>
-                    <a href="{{ path('app_admin_conducteur_edit', {'id': conducteur.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="12">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <div class="col-xl-10">
 
+            <div class="row">
+
+
+                <div id="responsiveTables" class="mb-5">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table mb-0">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Nom</th>
+                                            <th>Prenom</th>
+                                            <th>Email</th>
+                                            <th>Ville</th>
+                                            <th>Code_postal</th>
+                                            <th>Age</th>
+                                            <th>Tel</th>
+                                            <th>Numero_vol</th>
+                                            <th>Adresse</th>
+                                            <th>Message</th>
+                                            <th>actions</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for conducteur in conducteurs %}
+                                            <tr>
+                                                <td>{{ conducteur.id }}</td>
+                                                <td>{{ conducteur.nom }}</td>
+                                                <td>{{ conducteur.prenom }}</td>
+                                                <td>{{ conducteur.email }}</td>
+                                                <td>{{ conducteur.ville }}</td>
+                                                <td>{{ conducteur.codePostal }}</td>
+                                                <td>{{ conducteur.age }}</td>
+                                                <td>{{ conducteur.tel }}</td>
+                                                <td>{{ conducteur.numeroVol }}</td>
+                                                <td>{{ conducteur.adresse }}</td>
+                                                <td>{{ conducteur.message }}</td>
+                                                <td>
+                                                    <a href="{{ path('app_admin_conducteur_show', {'id': conducteur.id}) }}">show</a>
+                                                    <a href="{{ path('app_admin_conducteur_edit', {'id': conducteur.id}) }}">edit</a>
+                                                </td>
+                                            </tr>
+                                        {% else %}
+                                            <tr>
+                                                <td colspan="12">no records found</td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <a href="{{ path('app_admin_conducteur_new') }}">Create new</a>
 {% endblock %}

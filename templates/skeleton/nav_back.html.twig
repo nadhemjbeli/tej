@@ -1,0 +1,57 @@
+<div id="sidebar" class="app-sidebar">
+
+    <div class="app-sidebar-content" data-scrollbar="true" data-height="100%">
+
+        <div class="menu">
+            <div class="menu-header">Navigation</div>
+            <div class="menu-item">
+                <a href="index.html" class="menu-link">
+                    <span class="menu-icon"><i class="bi bi-cpu"></i></span>
+                    <span class="menu-text">Dashboard</span>
+                </a>
+            </div>
+            <div class="menu-item {% if app.request.get('_route') == 'app_admin_marque_index' %}active{% endif %}">
+                <a href="{{ path('app_admin_marque_index') }}" class="menu-link">
+                    <span class="menu-text">Marque</span>
+                </a>
+            </div>
+            <div class="menu-item {% if app.request.get('_route') == 'app_admin_voiture_index' %}active{% endif %}">
+                <a href="{{ path('app_admin_voiture_index') }}" class="menu-link">
+                    <span class="menu-text">Voiture</span>
+                </a>
+            </div>
+            <div class="menu-item {% if app.request.get('_route') == 'app_admin_images_voitures_index' %}active{% endif %}">
+                <a href="{{ path('app_admin_images_voitures_index') }}" class="menu-link">
+                    <span class="menu-text">Images Voitures</span>
+                </a>
+            </div>
+            <div class="menu-item {% if app.request.get('_route') == 'app_admin_prix_index' %}active{% endif %}">
+                <a href="{{ path('app_admin_prix_index') }}" class="menu-link">
+                    <span class="menu-text">Prix Voiture</span>
+                </a>
+            </div>
+            <div class="menu-item {% if app.request.get('_route') == 'app_reservation_index' %}active{% endif %}">
+                <a href="{{ path('app_reservation_index') }}" class="menu-link">
+                    <span class="menu-text">Reservation</span>
+                </a>
+            </div>
+            <div class="menu-item {% if app.request.get('_route') == 'app_admin_conducteur_index' %}active{% endif %}">
+                <a href="{{ path('app_admin_conducteur_index') }}" class="menu-link">
+                    <span class="menu-text">Conducteur</span>
+                </a>
+            </div>
+            <div class="menu-item {% if app.request.get('_route') == 'app_contact_index' %}active{% endif %}">
+                <a href="{{ path('app_contact_index') }}" class="menu-link">
+                    <span class="menu-text">Contact</span>
+                </a>
+            </div>
+        </div>
+
+{#        <div class="p-3 px-4 mt-auto">#}
+{#            <a href="documentation/index.html" target="_blank" class="btn d-block btn-outline-theme">#}
+{#                <i class="fa fa-code-branch me-2 ms-n2 opacity-5"></i> Documentation#}
+{#            </a>#}
+{#        </div>#}
+    </div>
+
+</div>

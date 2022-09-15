@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Voiture;
+use App\Repository\ImagesVoituresRepository;
 use App\Repository\VoitureRepository;
 use DateInterval;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,8 +18,8 @@ class TestController extends AbstractController
     public function accueuil(VoitureRepository $voitureRepository): Response
     {
         $voitures = $voitureRepository->findAll();
-        $currentDate = new \DateTime();
-        $currentYear = $currentDate->format("Y");
+//        $currentDate = new \DateTime();
+//        $currentYear = $currentDate->format("Y");
         foreach ($voitures as $voiture){
             $voiture->setPrixActuel();
 //            $dS1 = $currentYear."-".$voiture->getPrix()->getDateDebutS1();
@@ -68,7 +69,6 @@ class TestController extends AbstractController
             array_push($categories, $c);
             array_push($list_voitures, $voitureRepository->findBy(['categorie'=>$c]));
         }
-//        dd($list_voitures);
         return $this->render('client_reservation/accueil.html.twig', [
             'controller_name' => 'TestController',
             'categories' => $categories,
@@ -90,5 +90,32 @@ class TestController extends AbstractController
 //        foreach ($voitures as $voiture){
 //            $date = $voiture->
 //        }
+    }
+
+    /**
+     * @Route("/{id}/images", name="app_images")
+     */
+    public function imagesMultiple(ImagesVoituresRepository $imagesVoituresRepository, Voiture $voiture): Response
+    {
+
+        $imagesVoitures = $imagesVoituresRepository->findBy(['voiture' => $voiture]);
+//        dd($imagesVoitures);
+
+        return $this->render('client_reservation/reserve/test.html.twig', [
+            'images_voitures' => $imagesVoitures
+        ]);
+    }
+    /**
+     * @Route("/test", name="app_test")
+     */
+    public function test(ImagesVoituresRepository $imagesVoituresRepository ): Response
+    {
+
+//        $imagesVoitures = $imagesVoituresRepository->findBy(['voiture' => $voiture]);
+//        dd($imagesVoitures);
+
+        return $this->render('base_back.html.twig', [
+//            'images_voitures' => $imagesVoitures
+        ]);
     }
 }

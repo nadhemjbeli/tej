@@ -39,7 +39,14 @@ class ClientReservationController extends AbstractController
     {
         $carburants = [];
         $categories = [];
+        $transmissions = [];
+        $search_transmission = "";
+        $search_categorie = "";
+        $search_carburant = "";
         $voitures = $voitureRepository->findAll();
+        foreach ($voitures as $voiture) {
+            $voiture->setPrixActuel();
+        }
         /** @var Voiture[] $voituresByCarburant */
         $voituresByCarburant = $voitureRepository->findByCarburant();
 
@@ -52,6 +59,13 @@ class ClientReservationController extends AbstractController
 //        dd($voituresByCategorie);
         foreach ($voituresByCategorie as $cat){
             array_push($categories, $cat->getCategorie());
+        }
+
+        /** @var Voiture[] $voituresByCategorie */
+        $voituresByTransmission = $voitureRepository->findByTransmission();
+//        dd($voituresByCategorie);
+        foreach ($voituresByTransmission as $trans){
+            array_push($transmissions, $trans->getTransmission());
         }
 
         if ($request->getMethod() == Request::METHOD_POST){
@@ -68,7 +82,9 @@ class ClientReservationController extends AbstractController
                 $search_carburant = "";
             }
             $voitures = $voitureRepository->searchVoture($search_transmission, $search_categorie, $search_carburant);
-
+            foreach ($voitures as $voiture) {
+                $voiture->setPrixActuel();
+            }
         }
 
 //        $reservations = $reservationRepository->findAll();
@@ -76,7 +92,11 @@ class ClientReservationController extends AbstractController
 //            'reservations' => $reservations,
             'carburants' => $carburants,
             'categories' => $categories,
-            'voitures' => $voitures
+            'transmissions' => $transmissions,
+            'voitures' => $voitures,
+            'search_transmission' => $search_transmission,
+            'search_categorie' => $search_categorie,
+            'search_carburant' => $search_carburant,
         ]);
     }
 
@@ -93,17 +113,21 @@ class ClientReservationController extends AbstractController
         $date_reprise = $request->query->get('date_reprise');
         $heure_debut = $request->query->get('heure_debut');
         $heure_fin = $request->query->get('heure_fin');
+        $prix_total = (float) $request->query->get('prix_total');
+//        dd($prix_total);
         $voiture = $voitureRepository->findOneBy(['id'=>$id]);
         $reservation = new Reservation();
         $reservation->setLieuPrise($lieu_prise);
         $reservation->setLieuReprise($lieu_reprise);
-        $reservation->setDatePrise(\DateTime::createFromFormat('d-m-Y', $date_prise));
-        $reservation->setDateReprise(\DateTime::createFromFormat('d-m-Y', $date_reprise));
+//        dd($date_prise);
+        $reservation->setDatePrise(\DateTime::createFromFormat('Y-m-d', $date_prise));
+        $reservation->setDateReprise(\DateTime::createFromFormat('Y-m-d', $date_reprise));
         $reservation->setHeurePrise($heure_debut);
         $reservation->setHeureReprise($heure_fin);
         $reservation->setHeureReprise($heure_fin);
         $reservation->setIdVoiture($voiture);
         $reservation->setCode($code);
+        $reservation->setPrixTotal($prix_total);
         $session = $this->requestStack->getSession();
         $session->set('code', $code);
         $this->entityManager->persist($reservation);

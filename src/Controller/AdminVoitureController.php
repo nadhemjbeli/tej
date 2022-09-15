@@ -8,6 +8,7 @@ use App\Repository\VoitureRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
@@ -17,13 +18,25 @@ use Symfony\Component\String\Slugger\SluggerInterface;
  */
 class AdminVoitureController extends AbstractController
 {
+
+    private RequestStack $requestStack;
+
+    public function __construct(RequestStack $requestStack){
+
+        $this->requestStack = $requestStack;
+    }
+
     /**
      * @Route("/", name="app_admin_voiture_index", methods={"GET"})
      */
     public function index(VoitureRepository $voitureRepository): Response
     {
+        $voitures = $voitureRepository->findAll();
+        foreach ($voitures as $voiture) {
+            $voiture->setPrixActuel();
+        }
         return $this->render('admin_voiture/index.html.twig', [
-            'voitures' => $voitureRepository->findAll(),
+            'voitures' => $voitures,
         ]);
     }
 
@@ -53,11 +66,13 @@ class AdminVoitureController extends AbstractController
                 } catch (FileException $e) {
                     // ... handle exception if something happens during file upload
                 }
+                $code = $voiture->getMarque().' '.uniqid();
                 $voiture->setImage($newFilename);
-                $voiture->setCode($voiture->getMarque().' '.uniqid());
+                $voiture->setCode($code);
                 $voitureRepository->add($voiture, true);
-
-                return $this->redirectToRoute('app_admin_voiture_index', [], Response::HTTP_SEE_OTHER);
+                $session = $this->requestStack->getSession();
+                $session->set('code_voiture', $code);
+                return $this->redirectToRoute('app_admin_prix_new', [], Response::HTTP_SEE_OTHER);
             }
         }
 

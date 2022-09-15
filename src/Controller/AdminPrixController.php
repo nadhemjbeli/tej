@@ -5,8 +5,10 @@ namespace App\Controller;
 use App\Entity\Prix;
 use App\Form\PrixType;
 use App\Repository\PrixRepository;
+use App\Repository\VoitureRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -15,6 +17,15 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class AdminPrixController extends AbstractController
 {
+
+    private RequestStack $requestStack;
+
+    public function __construct(RequestStack $requestStack){
+
+        $this->requestStack = $requestStack;
+    }
+
+
     /**
      * @Route("/", name="app_admin_prix_index", methods={"GET"})
      */
@@ -28,13 +39,18 @@ class AdminPrixController extends AbstractController
     /**
      * @Route("/new", name="app_admin_prix_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, PrixRepository $prixRepository): Response
+    public function new(Request $request, PrixRepository $prixRepository, VoitureRepository $voitureRepository): Response
     {
         $prix = new Prix();
         $form = $this->createForm(PrixType::class, $prix);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $session = $this->requestStack->getSession();
+            $code_voiture = $session->get('code_voiture');
+            $voiture = $voitureRepository->findOneBy(['code' => $code_voiture]);
+            $prix->setVoiture($voiture);
+
             $prixRepository->add($prix, true);
 
             return $this->redirectToRoute('app_admin_prix_index', [], Response::HTTP_SEE_OTHER);

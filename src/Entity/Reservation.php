@@ -58,6 +58,11 @@ class Reservation
      */
     private $code;
 
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $prixTotal;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -159,6 +164,18 @@ class Reservation
     public function setCode(?string $code): self
     {
         $this->code = $code;
+
+        return $this;
+    }
+
+    public function getPrixTotal(): ?float
+    {
+        return $this->prixTotal;
+    }
+
+    public function setPrixTotal(float $prixTotal): self
+    {
+        $this->prixTotal = $prixTotal;
 
         return $this;
     }

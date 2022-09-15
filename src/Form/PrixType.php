@@ -46,7 +46,7 @@ class PrixType extends AbstractType
             ])
 //            ->add('DateFinS4')
             ->add('PrixS4')
-            ->add('voiture')
+//            ->add('voiture')
         ;
     }
 

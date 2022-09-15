@@ -296,8 +296,8 @@
                                     {% for voiture in tout_voitures %}
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                             <div class="r-best-vehicle-single">
-                                                <a href="resa0e5f.html?vhid=1" class="d-block m-auto img-fluid">
-                                                    {% if voiture.image%}
+                                                <a href="{{ path('app_images', {'id': voiture.id}) }}" class="d-block m-auto img-fluid">
+                                                    {% if voiture.image %}
                                                         <img src="{{ asset('admin/img/voiture/'~voiture.image) }}"
                                                              class="img-fluid d-block m-auto" alt="">
                                                     {% else %}
@@ -307,16 +307,22 @@
                                                 </a>
                                                 <div class="r-best-vehicle-content">
                                                     <span class="r-register-time">Model {{ voiture.annee }}</span>
-                                                    <a href="javaScript:void(0)" class="r-modal-name">{{ voiture.marque }}
+                                                    <a href="javaScript:void(0)"
+                                                       class="r-modal-name">{{ voiture.marque }}
                                                         <span>{{ voiture.categorie }}</span></a>
                                                     <div class="clearfix">
-                                                        <span class="r-average">{{ voiture.prixActuel }} €</b> /Jour</span>
+                                                        <span class="r-average">{{ voiture.prixActuel }} €</b>
+                                                            /Jour</span>
                                                         <span class="r-engine"><img src="assets/images/meter-icon.png"
                                                                                     class="d-inline-block" alt="">2.3K CC</span>
                                                     </div>
                                                     <ul>
-                                                        <li><i class="fa fa-cogs"></i><span>{{ voiture.transmission }}</span></li>
-                                                        <li><i class="fa fa-beer"></i><span>{{ voiture.carburant }}</span></li>
+                                                        <li>
+                                                            <i class="fa fa-cogs"></i><span>{{ voiture.transmission }}</span>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa fa-beer"></i><span>{{ voiture.carburant }}</span>
+                                                        </li>
                                                         <li><i class="fa fa-users"></i><span>5</span></li>
                                                         <li><i class="fa fa-briefcase"></i><span>540L</span></li>
                                                         <li><i class="fa fa-snowflake-o"></i><span>Oui</span></li>
@@ -331,18 +337,18 @@
                             </div>
                             {% set j = 2 %}
                             {% for cat in list_voitures %}
-                                {% if j <= 9 %}
-                                    <div class="r-best-tab d-none " data-tab-attr="0{{ j }}">
+                            {% if j <= 9 %}
+                            <div class="r-best-tab d-none " data-tab-attr="0{{ j }}">
                                 {% else %}
-                                    <div class="r-best-tab d-none " data-tab-attr="{{ j }}">
-                                {% endif %}
+                                <div class="r-best-tab d-none " data-tab-attr="{{ j }}">
+                                    {% endif %}
                                     <div class="r-best-vehicle-list clearfix row">
 
                                         {% for voiture in cat %}
                                             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="r-best-vehicle-single">
-                                                    <a href="resa46ba.html?vhid=6" class="d-block m-auto img-fluid">
-                                                        {% if voiture.image%}
+                                                    <a href="{{ path('app_images', {'id': voiture.id}) }}" class="d-block m-auto img-fluid">
+                                                        {% if voiture.image %}
                                                             <img src="{{ asset('admin/img/voiture/'~voiture.image) }}"
                                                                  class="img-fluid d-block m-auto" alt="">
                                                         {% else %}
@@ -352,13 +358,16 @@
                                                     </a>
                                                     <div class="r-best-vehicle-content">
                                                         <span class="r-register-time">Model {{ voiture.annee }}</span>
-                                                        <a href="javaScript:void(0)" class="r-modal-name">{{ voiture.marque }}
+                                                        <a href="javaScript:void(0)"
+                                                           class="r-modal-name">{{ voiture.marque }}
                                                             <span>{{ voiture.categorie }}</span></a>
                                                         <div class="clearfix">
-                                                            <span class="r-average">{{ voiture.prixActuel }} €</b> /Jour</span>
-                                                            <span class="r-engine"><img src="assets/images/meter-icon.png"
-                                                                                        class="d-inline-block"
-                                                                                        alt="">2.3K CC</span>
+                                                            <span class="r-average">{{ voiture.prixActuel }} €</b>
+                                                                /Jour</span>
+                                                            <span class="r-engine"><img
+                                                                        src="assets/images/meter-icon.png"
+                                                                        class="d-inline-block"
+                                                                        alt="">2.3K CC</span>
                                                         </div>
                                                         <ul>
                                                             <li><i class="fa fa-cogs"></i><span>Manuelle</span></li>
@@ -376,346 +385,347 @@
                                         {% set j = j + 1 %}
                                     </div>
                                 </div>
-                            {% endfor %}
-{#                                <div class="r-best-tab d-none" data-tab-attr="03">#}
-{#                                    <div class="r-best-vehicle-list clearfix row">#}
+                                {% endfor %}
+                                {# <div class="r-best-tab d-none" data-tab-attr="03"> #}
+                                {# <div class="r-best-vehicle-list clearfix row"> #}
 
 
-{#                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12">#}
-{#                                            <div class="r-best-vehicle-single">#}
-{#                                                <a href="resa97d3.html?vhid=3" class="d-block m-auto img-fluid">#}
-{#                                                    <img src="admin/img/vehicleimages/fiat_tipo-berline.jpg"#}
-{#                                                         class="img-fluid d-block m-auto" alt="">#}
-{#                                                </a>#}
-{#                                                <div class="r-best-vehicle-content">#}
-{#                                                    <span class="r-register-time">Model 2020</span>#}
-{#                                                    <a href="javaScript:void(0)" class="r-modal-name">Fiat Tipo ou#}
-{#                                                        Similaire#}
-{#                                                        <span>&Eacute;conomique</span></a>#}
-{#                                                    <div class="clearfix">#}
-{#                                                        <span class="r-average">57 €</b> /Jour</span>#}
-{#                                                        <span class="r-engine"><img src="assets/images/meter-icon.png"#}
-{#                                                                                    class="d-inline-block"#}
-{#                                                                                    alt="">2.3K CC</span>#}
-{#                                                    </div>#}
-{#                                                    <ul>#}
-{#                                                        <li><i class="fa fa-cogs"></i><span>Manuelle</span></li>#}
-{#                                                        <li><i class="fa fa-beer"></i><span>Essence</span></li>#}
-{#                                                        <li><i class="fa fa-users"></i><span>5</span></li>#}
-{#                                                        <li><i class="fa fa-briefcase"></i><span>500L</span></li>#}
-{#                                                        <li><i class="fa fa-snowflake-o"></i><span>Oui</span></li>#}
-{#                                                    </ul>#}
-{#                                                </div>#}
-{#                                            </div>#}
-{#                                        </div>#}
+                                {# <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12"> #}
+                                {# <div class="r-best-vehicle-single"> #}
+                                {# <a href="resa97d3.html?vhid=3" class="d-block m-auto img-fluid"> #}
+                                {# <img src="admin/img/vehicleimages/fiat_tipo-berline.jpg" #}
+                                {# class="img-fluid d-block m-auto" alt=""> #}
+                                {# </a> #}
+                                {# <div class="r-best-vehicle-content"> #}
+                                {# <span class="r-register-time">Model 2020</span> #}
+                                {# <a href="javaScript:void(0)" class="r-modal-name">Fiat Tipo ou #}
+                                {# Similaire #}
+                                {# <span>&Eacute;conomique</span></a> #}
+                                {# <div class="clearfix"> #}
+                                {# <span class="r-average">57 €</b> /Jour</span> #}
+                                {# <span class="r-engine"><img src="assets/images/meter-icon.png" #}
+                                {# class="d-inline-block" #}
+                                {# alt="">2.3K CC</span> #}
+                                {# </div> #}
+                                {# <ul> #}
+                                {# <li><i class="fa fa-cogs"></i><span>Manuelle</span></li> #}
+                                {# <li><i class="fa fa-beer"></i><span>Essence</span></li> #}
+                                {# <li><i class="fa fa-users"></i><span>5</span></li> #}
+                                {# <li><i class="fa fa-briefcase"></i><span>500L</span></li> #}
+                                {# <li><i class="fa fa-snowflake-o"></i><span>Oui</span></li> #}
+                                {# </ul> #}
+                                {# </div> #}
+                                {# </div> #}
+                                {# </div> #}
 
 
-{#                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12">#}
-{#                                            <div class="r-best-vehicle-single">#}
-{#                                                <a href="resaab8f.html?vhid=4" class="d-block m-auto img-fluid">#}
-{#                                                    <img src="admin/img/vehicleimages/polo%208.jpg"#}
-{#                                                         class="img-fluid d-block m-auto" alt="">#}
-{#                                                </a>#}
-{#                                                <div class="r-best-vehicle-content">#}
-{#                                                    <span class="r-register-time">Model 2020</span>#}
-{#                                                    <a href="javaScript:void(0)" class="r-modal-name">Volkswagen Polo 8#}
-{#                                                        ou#}
-{#                                                        Similaire <span>&Eacute;conomique</span></a>#}
-{#                                                    <div class="clearfix">#}
-{#                                                        <span class="r-average">55 €</b> /Jour</span>#}
-{#                                                        <span class="r-engine"><img src="assets/images/meter-icon.png"#}
-{#                                                                                    class="d-inline-block"#}
-{#                                                                                    alt="">2.3K CC</span>#}
-{#                                                    </div>#}
-{#                                                    <ul>#}
-{#                                                        <li><i class="fa fa-cogs"></i><span>Manuelle</span></li>#}
-{#                                                        <li><i class="fa fa-beer"></i><span>Essence</span></li>#}
-{#                                                        <li><i class="fa fa-users"></i><span>5</span></li>#}
-{#                                                        <li><i class="fa fa-briefcase"></i><span>500L</span></li>#}
-{#                                                        <li><i class="fa fa-snowflake-o"></i><span>Oui</span></li>#}
-{#                                                    </ul>#}
-{#                                                </div>#}
-{#                                            </div>#}
-{#                                        </div>#}
+                                {# <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12"> #}
+                                {# <div class="r-best-vehicle-single"> #}
+                                {# <a href="resaab8f.html?vhid=4" class="d-block m-auto img-fluid"> #}
+                                {# <img src="admin/img/vehicleimages/polo%208.jpg" #}
+                                {# class="img-fluid d-block m-auto" alt=""> #}
+                                {# </a> #}
+                                {# <div class="r-best-vehicle-content"> #}
+                                {# <span class="r-register-time">Model 2020</span> #}
+                                {# <a href="javaScript:void(0)" class="r-modal-name">Volkswagen Polo 8 #}
+                                {# ou #}
+                                {# Similaire <span>&Eacute;conomique</span></a> #}
+                                {# <div class="clearfix"> #}
+                                {# <span class="r-average">55 €</b> /Jour</span> #}
+                                {# <span class="r-engine"><img src="assets/images/meter-icon.png" #}
+                                {# class="d-inline-block" #}
+                                {# alt="">2.3K CC</span> #}
+                                {# </div> #}
+                                {# <ul> #}
+                                {# <li><i class="fa fa-cogs"></i><span>Manuelle</span></li> #}
+                                {# <li><i class="fa fa-beer"></i><span>Essence</span></li> #}
+                                {# <li><i class="fa fa-users"></i><span>5</span></li> #}
+                                {# <li><i class="fa fa-briefcase"></i><span>500L</span></li> #}
+                                {# <li><i class="fa fa-snowflake-o"></i><span>Oui</span></li> #}
+                                {# </ul> #}
+                                {# </div> #}
+                                {# </div> #}
+                                {# </div> #}
 
 
-{#                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12">#}
-{#                                            <div class="r-best-vehicle-single">#}
-{#                                                <a href="resa4b0f.html?vhid=8" class="d-block m-auto img-fluid">#}
-{#                                                    <img src="admin/img/vehicleimages/panda%202.jpg"#}
-{#                                                         class="img-fluid d-block m-auto" alt="">#}
-{#                                                </a>#}
-{#                                                <div class="r-best-vehicle-content">#}
-{#                                                    <span class="r-register-time">Model 2021</span>#}
-{#                                                    <a href="javaScript:void(0)" class="r-modal-name">Fiat Panda ou#}
-{#                                                        Similaire <span>&Eacute;conomique</span></a>#}
-{#                                                    <div class="clearfix">#}
-{#                                                        <span class="r-average">45 €</b> /Jour</span>#}
-{#                                                        <span class="r-engine"><img src="assets/images/meter-icon.png"#}
-{#                                                                                    class="d-inline-block"#}
-{#                                                                                    alt="">2.3K CC</span>#}
-{#                                                    </div>#}
-{#                                                    <ul>#}
-{#                                                        <li><i class="fa fa-cogs"></i><span>Manuelle</span></li>#}
-{#                                                        <li><i class="fa fa-beer"></i><span>Petrol</span></li>#}
-{#                                                        <li><i class="fa fa-users"></i><span>5</span></li>#}
-{#                                                        <li><i class="fa fa-briefcase"></i><span>500L</span></li>#}
-{#                                                        <li><i class="fa fa-snowflake-o"></i><span>Oui</span></li>#}
-{#                                                    </ul>#}
-{#                                                </div>#}
-{#                                            </div>#}
-{#                                        </div>#}
+                                {# <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12"> #}
+                                {# <div class="r-best-vehicle-single"> #}
+                                {# <a href="resa4b0f.html?vhid=8" class="d-block m-auto img-fluid"> #}
+                                {# <img src="admin/img/vehicleimages/panda%202.jpg" #}
+                                {# class="img-fluid d-block m-auto" alt=""> #}
+                                {# </a> #}
+                                {# <div class="r-best-vehicle-content"> #}
+                                {# <span class="r-register-time">Model 2021</span> #}
+                                {# <a href="javaScript:void(0)" class="r-modal-name">Fiat Panda ou #}
+                                {# Similaire <span>&Eacute;conomique</span></a> #}
+                                {# <div class="clearfix"> #}
+                                {# <span class="r-average">45 €</b> /Jour</span> #}
+                                {# <span class="r-engine"><img src="assets/images/meter-icon.png" #}
+                                {# class="d-inline-block" #}
+                                {# alt="">2.3K CC</span> #}
+                                {# </div> #}
+                                {# <ul> #}
+                                {# <li><i class="fa fa-cogs"></i><span>Manuelle</span></li> #}
+                                {# <li><i class="fa fa-beer"></i><span>Petrol</span></li> #}
+                                {# <li><i class="fa fa-users"></i><span>5</span></li> #}
+                                {# <li><i class="fa fa-briefcase"></i><span>500L</span></li> #}
+                                {# <li><i class="fa fa-snowflake-o"></i><span>Oui</span></li> #}
+                                {# </ul> #}
+                                {# </div> #}
+                                {# </div> #}
+                                {# </div> #}
 
 
-{#                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12">#}
-{#                                            <div class="r-best-vehicle-single">#}
-{#                                                <a href="resa3910.html?vhid=17" class="d-block m-auto img-fluid">#}
-{#                                                    <img src="admin/img/vehicleimages/hondai%20i%2010%20manuelle.jpg"#}
-{#                                                         class="img-fluid d-block m-auto" alt="">#}
-{#                                                </a>#}
-{#                                                <div class="r-best-vehicle-content">#}
-{#                                                    <span class="r-register-time">Model 2021</span>#}
-{#                                                    <a href="javaScript:void(0)" class="r-modal-name">HYUNDAI I10 <span>&Eacute;conomique</span></a>#}
-{#                                                    <div class="clearfix">#}
-{#                                                        <span class="r-average">50 €</b> /Jour</span>#}
-{#                                                        <span class="r-engine"><img src="assets/images/meter-icon.png"#}
-{#                                                                                    class="d-inline-block"#}
-{#                                                                                    alt="">2.3K CC</span>#}
-{#                                                    </div>#}
-{#                                                    <ul>#}
-{#                                                        <li><i class="fa fa-cogs"></i><span>Manuelle</span></li>#}
-{#                                                        <li><i class="fa fa-beer"></i><span>Essence</span></li>#}
-{#                                                        <li><i class="fa fa-users"></i><span>5</span></li>#}
-{#                                                        <li><i class="fa fa-briefcase"></i><span>252L</span></li>#}
-{#                                                        <li><i class="fa fa-snowflake-o"></i><span>Oui</span></li>#}
-{#                                                    </ul>#}
-{#                                                </div>#}
-{#                                            </div>#}
-{#                                        </div>#}
+                                {# <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12"> #}
+                                {# <div class="r-best-vehicle-single"> #}
+                                {# <a href="resa3910.html?vhid=17" class="d-block m-auto img-fluid"> #}
+                                {# <img src="admin/img/vehicleimages/hondai%20i%2010%20manuelle.jpg" #}
+                                {# class="img-fluid d-block m-auto" alt=""> #}
+                                {# </a> #}
+                                {# <div class="r-best-vehicle-content"> #}
+                                {# <span class="r-register-time">Model 2021</span> #}
+                                {# <a href="javaScript:void(0)" class="r-modal-name">HYUNDAI I10 <span>&Eacute;conomique</span></a> #}
+                                {# <div class="clearfix"> #}
+                                {# <span class="r-average">50 €</b> /Jour</span> #}
+                                {# <span class="r-engine"><img src="assets/images/meter-icon.png" #}
+                                {# class="d-inline-block" #}
+                                {# alt="">2.3K CC</span> #}
+                                {# </div> #}
+                                {# <ul> #}
+                                {# <li><i class="fa fa-cogs"></i><span>Manuelle</span></li> #}
+                                {# <li><i class="fa fa-beer"></i><span>Essence</span></li> #}
+                                {# <li><i class="fa fa-users"></i><span>5</span></li> #}
+                                {# <li><i class="fa fa-briefcase"></i><span>252L</span></li> #}
+                                {# <li><i class="fa fa-snowflake-o"></i><span>Oui</span></li> #}
+                                {# </ul> #}
+                                {# </div> #}
+                                {# </div> #}
+                                {# </div> #}
 
 
-{#                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12">#}
-{#                                            <div class="r-best-vehicle-single">#}
-{#                                                <a href="resaffea.html?vhid=18" class="d-block m-auto img-fluid">#}
-{#                                                    <img src="admin/img/vehicleimages/fiat-panda-city-cross-annee-2021_MD_1.jpg"#}
-{#                                                         class="img-fluid d-block m-auto" alt="">#}
-{#                                                </a>#}
-{#                                                <div class="r-best-vehicle-content">#}
-{#                                                    <span class="r-register-time">Model 2021</span>#}
-{#                                                    <a href="javaScript:void(0)" class="r-modal-name">Fiat panda cross#}
-{#                                                        <span>&Eacute;conomique</span></a>#}
-{#                                                    <div class="clearfix">#}
-{#                                                        <span class="r-average">55 €</b> /Jour</span>#}
-{#                                                        <span class="r-engine"><img src="assets/images/meter-icon.png"#}
-{#                                                                                    class="d-inline-block"#}
-{#                                                                                    alt="">2.3K CC</span>#}
-{#                                                    </div>#}
-{#                                                    <ul>#}
-{#                                                        <li><i class="fa fa-cogs"></i><span>Manuelle</span></li>#}
-{#                                                        <li><i class="fa fa-beer"></i><span>Essence</span></li>#}
-{#                                                        <li><i class="fa fa-users"></i><span>5</span></li>#}
-{#                                                        <li><i class="fa fa-briefcase"></i><span>225L</span></li>#}
-{#                                                        <li><i class="fa fa-snowflake-o"></i><span>Oui</span></li>#}
-{#                                                    </ul>#}
-{#                                                </div>#}
-{#                                            </div>#}
-{#                                        </div>#}
+                                {# <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12"> #}
+                                {# <div class="r-best-vehicle-single"> #}
+                                {# <a href="resaffea.html?vhid=18" class="d-block m-auto img-fluid"> #}
+                                {# <img src="admin/img/vehicleimages/fiat-panda-city-cross-annee-2021_MD_1.jpg" #}
+                                {# class="img-fluid d-block m-auto" alt=""> #}
+                                {# </a> #}
+                                {# <div class="r-best-vehicle-content"> #}
+                                {# <span class="r-register-time">Model 2021</span> #}
+                                {# <a href="javaScript:void(0)" class="r-modal-name">Fiat panda cross #}
+                                {# <span>&Eacute;conomique</span></a> #}
+                                {# <div class="clearfix"> #}
+                                {# <span class="r-average">55 €</b> /Jour</span> #}
+                                {# <span class="r-engine"><img src="assets/images/meter-icon.png" #}
+                                {# class="d-inline-block" #}
+                                {# alt="">2.3K CC</span> #}
+                                {# </div> #}
+                                {# <ul> #}
+                                {# <li><i class="fa fa-cogs"></i><span>Manuelle</span></li> #}
+                                {# <li><i class="fa fa-beer"></i><span>Essence</span></li> #}
+                                {# <li><i class="fa fa-users"></i><span>5</span></li> #}
+                                {# <li><i class="fa fa-briefcase"></i><span>225L</span></li> #}
+                                {# <li><i class="fa fa-snowflake-o"></i><span>Oui</span></li> #}
+                                {# </ul> #}
+                                {# </div> #}
+                                {# </div> #}
+                                {# </div> #}
 
 
-{#                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12">#}
-{#                                            <div class="r-best-vehicle-single">#}
-{#                                                <a href="resa8e1d.html?vhid=19" class="d-block m-auto img-fluid">#}
-{#                                                    <img src="admin/img/vehicleimages/peugeot%20208.jpg"#}
-{#                                                         class="img-fluid d-block m-auto" alt="">#}
-{#                                                </a>#}
-{#                                                <div class="r-best-vehicle-content">#}
-{#                                                    <span class="r-register-time">Model 2019</span>#}
-{#                                                    <a href="javaScript:void(0)" class="r-modal-name">peugeot 208 <span>&Eacute;conomique</span></a>#}
-{#                                                    <div class="clearfix">#}
-{#                                                        <span class="r-average">50 €</b> /Jour</span>#}
-{#                                                        <span class="r-engine"><img src="assets/images/meter-icon.png"#}
-{#                                                                                    class="d-inline-block"#}
-{#                                                                                    alt="">2.3K CC</span>#}
-{#                                                    </div>#}
-{#                                                    <ul>#}
-{#                                                        <li><i class="fa fa-cogs"></i><span></span></li>#}
-{#                                                        <li><i class="fa fa-beer"></i><span></span></li>#}
-{#                                                        <li><i class="fa fa-users"></i><span>5</span></li>#}
-{#                                                        <li><i class="fa fa-briefcase"></i><span>265L</span></li>#}
-{#                                                        <li><i class="fa fa-snowflake-o"></i><span>Oui</span></li>#}
-{#                                                    </ul>#}
-{#                                                </div>#}
-{#                                            </div>#}
-{#                                        </div>#}
+                                {# <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12"> #}
+                                {# <div class="r-best-vehicle-single"> #}
+                                {# <a href="resa8e1d.html?vhid=19" class="d-block m-auto img-fluid"> #}
+                                {# <img src="admin/img/vehicleimages/peugeot%20208.jpg" #}
+                                {# class="img-fluid d-block m-auto" alt=""> #}
+                                {# </a> #}
+                                {# <div class="r-best-vehicle-content"> #}
+                                {# <span class="r-register-time">Model 2019</span> #}
+                                {# <a href="javaScript:void(0)" class="r-modal-name">peugeot 208 <span>&Eacute;conomique</span></a> #}
+                                {# <div class="clearfix"> #}
+                                {# <span class="r-average">50 €</b> /Jour</span> #}
+                                {# <span class="r-engine"><img src="assets/images/meter-icon.png" #}
+                                {# class="d-inline-block" #}
+                                {# alt="">2.3K CC</span> #}
+                                {# </div> #}
+                                {# <ul> #}
+                                {# <li><i class="fa fa-cogs"></i><span></span></li> #}
+                                {# <li><i class="fa fa-beer"></i><span></span></li> #}
+                                {# <li><i class="fa fa-users"></i><span>5</span></li> #}
+                                {# <li><i class="fa fa-briefcase"></i><span>265L</span></li> #}
+                                {# <li><i class="fa fa-snowflake-o"></i><span>Oui</span></li> #}
+                                {# </ul> #}
+                                {# </div> #}
+                                {# </div> #}
+                                {# </div> #}
 
 
-{#                                    </div>#}
-{#                                </div>#}
-{#                                <div class="r-best-tab d-none" data-tab-attr="04">#}
-{#                                    <div class="r-best-vehicle-list clearfix row">#}
+                                {# </div> #}
+                                {# </div> #}
+                                {# <div class="r-best-tab d-none" data-tab-attr="04"> #}
+                                {# <div class="r-best-vehicle-list clearfix row"> #}
 
 
-{#                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12">#}
-{#                                            <div class="r-best-vehicle-single">#}
-{#                                                <a href="resa0e5f.html?vhid=1" class="d-block m-auto img-fluid">#}
-{#                                                    <img src="admin/img/vehicleimages/CALSS%20e.jpg"#}
-{#                                                         class="img-fluid d-block m-auto" alt="">#}
-{#                                                </a>#}
-{#                                                <div class="r-best-vehicle-content">#}
-{#                                                    <span class="r-register-time">Model 2020</span>#}
-{#                                                    <a href="javaScript:void(0)" class="r-modal-name">Mercedes E180#}
-{#                                                        <span>VIP</span></a>#}
-{#                                                    <div class="clearfix">#}
-{#                                                        <span class="r-average">190 €</b> /Jour</span>#}
-{#                                                        <span class="r-engine"><img src="assets/images/meter-icon.png"#}
-{#                                                                                    class="d-inline-block"#}
-{#                                                                                    alt="">2.3K CC</span>#}
-{#                                                    </div>#}
-{#                                                    <ul>#}
-{#                                                        <li><i class="fa fa-cogs"></i><span>Automatique</span></li>#}
-{#                                                        <li><i class="fa fa-beer"></i><span>Essence</span></li>#}
-{#                                                        <li><i class="fa fa-users"></i><span>5</span></li>#}
-{#                                                        <li><i class="fa fa-briefcase"></i><span>540L</span></li>#}
-{#                                                        <li><i class="fa fa-snowflake-o"></i><span>Oui</span></li>#}
-{#                                                    </ul>#}
-{#                                                </div>#}
-{#                                            </div>#}
-{#                                        </div>#}
+                                {# <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12"> #}
+                                {# <div class="r-best-vehicle-single"> #}
+                                {# <a href="resa0e5f.html?vhid=1" class="d-block m-auto img-fluid"> #}
+                                {# <img src="admin/img/vehicleimages/CALSS%20e.jpg" #}
+                                {# class="img-fluid d-block m-auto" alt=""> #}
+                                {# </a> #}
+                                {# <div class="r-best-vehicle-content"> #}
+                                {# <span class="r-register-time">Model 2020</span> #}
+                                {# <a href="javaScript:void(0)" class="r-modal-name">Mercedes E180 #}
+                                {# <span>VIP</span></a> #}
+                                {# <div class="clearfix"> #}
+                                {# <span class="r-average">190 €</b> /Jour</span> #}
+                                {# <span class="r-engine"><img src="assets/images/meter-icon.png" #}
+                                {# class="d-inline-block" #}
+                                {# alt="">2.3K CC</span> #}
+                                {# </div> #}
+                                {# <ul> #}
+                                {# <li><i class="fa fa-cogs"></i><span>Automatique</span></li> #}
+                                {# <li><i class="fa fa-beer"></i><span>Essence</span></li> #}
+                                {# <li><i class="fa fa-users"></i><span>5</span></li> #}
+                                {# <li><i class="fa fa-briefcase"></i><span>540L</span></li> #}
+                                {# <li><i class="fa fa-snowflake-o"></i><span>Oui</span></li> #}
+                                {# </ul> #}
+                                {# </div> #}
+                                {# </div> #}
+                                {# </div> #}
 
 
-{#                                    </div>#}
-{#                                </div>#}
-{#                                <div class="r-best-tab d-none" data-tab-attr="05">#}
-{#                                    <div class="r-best-vehicle-list clearfix row">#}
+                                {# </div> #}
+                                {# </div> #}
+                                {# <div class="r-best-tab d-none" data-tab-attr="05"> #}
+                                {# <div class="r-best-vehicle-list clearfix row"> #}
 
 
-{#                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12">#}
-{#                                            <div class="r-best-vehicle-single">#}
-{#                                                <a href="resa8cf3.html?vhid=2" class="d-block m-auto img-fluid">#}
-{#                                                    <img src="admin/img/vehicleimages/honda-city-phien-ban-g.png"#}
-{#                                                         class="img-fluid d-block m-auto" alt="">#}
-{#                                                </a>#}
-{#                                                <div class="r-best-vehicle-content">#}
-{#                                                    <span class="r-register-time">Model 2020</span>#}
-{#                                                    <a href="javaScript:void(0)" class="r-modal-name">Honda City#}
-{#                                                        automatique#}
-{#                                                        ou Similaire <span>Automatique</span></a>#}
-{#                                                    <div class="clearfix">#}
-{#                                                        <span class="r-average">63 €</b> /Jour</span>#}
-{#                                                        <span class="r-engine"><img src="assets/images/meter-icon.png"#}
-{#                                                                                    class="d-inline-block"#}
-{#                                                                                    alt="">2.3K CC</span>#}
-{#                                                    </div>#}
-{#                                                    <ul>#}
-{#                                                        <li><i class="fa fa-cogs"></i><span>Automatique</span></li>#}
-{#                                                        <li><i class="fa fa-beer"></i><span>Essence</span></li>#}
-{#                                                        <li><i class="fa fa-users"></i><span>5</span></li>#}
-{#                                                        <li><i class="fa fa-briefcase"></i><span>500L</span></li>#}
-{#                                                        <li><i class="fa fa-snowflake-o"></i><span>Oui</span></li>#}
-{#                                                    </ul>#}
-{#                                                </div>#}
-{#                                            </div>#}
-{#                                        </div>#}
+                                {# <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12"> #}
+                                {# <div class="r-best-vehicle-single"> #}
+                                {# <a href="resa8cf3.html?vhid=2" class="d-block m-auto img-fluid"> #}
+                                {# <img src="admin/img/vehicleimages/honda-city-phien-ban-g.png" #}
+                                {# class="img-fluid d-block m-auto" alt=""> #}
+                                {# </a> #}
+                                {# <div class="r-best-vehicle-content"> #}
+                                {# <span class="r-register-time">Model 2020</span> #}
+                                {# <a href="javaScript:void(0)" class="r-modal-name">Honda City #}
+                                {# automatique #}
+                                {# ou Similaire <span>Automatique</span></a> #}
+                                {# <div class="clearfix"> #}
+                                {# <span class="r-average">63 €</b> /Jour</span> #}
+                                {# <span class="r-engine"><img src="assets/images/meter-icon.png" #}
+                                {# class="d-inline-block" #}
+                                {# alt="">2.3K CC</span> #}
+                                {# </div> #}
+                                {# <ul> #}
+                                {# <li><i class="fa fa-cogs"></i><span>Automatique</span></li> #}
+                                {# <li><i class="fa fa-beer"></i><span>Essence</span></li> #}
+                                {# <li><i class="fa fa-users"></i><span>5</span></li> #}
+                                {# <li><i class="fa fa-briefcase"></i><span>500L</span></li> #}
+                                {# <li><i class="fa fa-snowflake-o"></i><span>Oui</span></li> #}
+                                {# </ul> #}
+                                {# </div> #}
+                                {# </div> #}
+                                {# </div> #}
 
 
-{#                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12">#}
-{#                                            <div class="r-best-vehicle-single">#}
-{#                                                <a href="resa9056.html?vhid=16" class="d-block m-auto img-fluid">#}
-{#                                                    <img src="admin/img/vehicleimages/46463.jpg"#}
-{#                                                         class="img-fluid d-block m-auto" alt="">#}
-{#                                                </a>#}
-{#                                                <div class="r-best-vehicle-content">#}
-{#                                                    <span class="r-register-time">Model 2021</span>#}
-{#                                                    <a href="javaScript:void(0)" class="r-modal-name">Grandi I10 <span>Automatique</span></a>#}
-{#                                                    <div class="clearfix">#}
-{#                                                        <span class="r-average">65 €</b> /Jour</span>#}
-{#                                                        <span class="r-engine"><img src="assets/images/meter-icon.png"#}
-{#                                                                                    class="d-inline-block"#}
-{#                                                                                    alt="">2.3K CC</span>#}
-{#                                                    </div>#}
-{#                                                    <ul>#}
-{#                                                        <li><i class="fa fa-cogs"></i><span>Automatique</span></li>#}
-{#                                                        <li><i class="fa fa-beer"></i><span>Essence</span></li>#}
-{#                                                        <li><i class="fa fa-users"></i><span>5</span></li>#}
-{#                                                        <li><i class="fa fa-briefcase"></i><span>260L</span></li>#}
-{#                                                        <li><i class="fa fa-snowflake-o"></i><span>Oui</span></li>#}
-{#                                                    </ul>#}
-{#                                                </div>#}
-{#                                            </div>#}
-{#                                        </div>#}
+                                {# <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12"> #}
+                                {# <div class="r-best-vehicle-single"> #}
+                                {# <a href="resa9056.html?vhid=16" class="d-block m-auto img-fluid"> #}
+                                {# <img src="admin/img/vehicleimages/46463.jpg" #}
+                                {# class="img-fluid d-block m-auto" alt=""> #}
+                                {# </a> #}
+                                {# <div class="r-best-vehicle-content"> #}
+                                {# <span class="r-register-time">Model 2021</span> #}
+                                {# <a href="javaScript:void(0)" class="r-modal-name">Grandi I10 <span>Automatique</span></a> #}
+                                {# <div class="clearfix"> #}
+                                {# <span class="r-average">65 €</b> /Jour</span> #}
+                                {# <span class="r-engine"><img src="assets/images/meter-icon.png" #}
+                                {# class="d-inline-block" #}
+                                {# alt="">2.3K CC</span> #}
+                                {# </div> #}
+                                {# <ul> #}
+                                {# <li><i class="fa fa-cogs"></i><span>Automatique</span></li> #}
+                                {# <li><i class="fa fa-beer"></i><span>Essence</span></li> #}
+                                {# <li><i class="fa fa-users"></i><span>5</span></li> #}
+                                {# <li><i class="fa fa-briefcase"></i><span>260L</span></li> #}
+                                {# <li><i class="fa fa-snowflake-o"></i><span>Oui</span></li> #}
+                                {# </ul> #}
+                                {# </div> #}
+                                {# </div> #}
+                                {# </div> #}
 
 
-{#                                    </div>#}
-{#                                </div>#}
+                                {# </div> #}
+                                {# </div> #}
 
 
-{#                                <div class="r-best-tab d-none" data-tab-attr="06">#}
-{#                                    <div class="r-best-vehicle-list clearfix row">#}
+                                {# <div class="r-best-tab d-none" data-tab-attr="06"> #}
+                                {# <div class="r-best-vehicle-list clearfix row"> #}
 
 
-{#                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12">#}
-{#                                            <div class="r-best-vehicle-single">#}
-{#                                                <a href="resa97e9.html?vhid=9" class="d-block m-auto img-fluid">#}
-{#                                                    <img src="admin/img/vehicleimages/h11.jpg"#}
-{#                                                         class="img-fluid d-block m-auto" alt="">#}
-{#                                                </a>#}
-{#                                                <div class="r-best-vehicle-content">#}
-{#                                                    <span class="r-register-time">Model 2020</span>#}
-{#                                                    <a href="javaScript:void(0)" class="r-modal-name"> Hyundai H1 ou#}
-{#                                                        Similaire <span>Van</span></a>#}
-{#                                                    <div class="clearfix">#}
-{#                                                        <span class="r-average">140 €</b> /Jour</span>#}
-{#                                                        <span class="r-engine"><img src="assets/images/meter-icon.png"#}
-{#                                                                                    class="d-inline-block"#}
-{#                                                                                    alt="">2.3K CC</span>#}
-{#                                                    </div>#}
-{#                                                    <ul>#}
-{#                                                        <li><i class="fa fa-cogs"></i><span>Manuelle</span></li>#}
-{#                                                        <li><i class="fa fa-beer"></i><span>Diesel</span></li>#}
-{#                                                        <li><i class="fa fa-users"></i><span>9</span></li>#}
-{#                                                        <li><i class="fa fa-briefcase"></i><span>500L</span></li>#}
-{#                                                        <li><i class="fa fa-snowflake-o"></i><span>Oui</span></li>#}
-{#                                                    </ul>#}
-{#                                                </div>#}
-{#                                            </div>#}
-{#                                        </div>#}
+                                {# <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12"> #}
+                                {# <div class="r-best-vehicle-single"> #}
+                                {# <a href="resa97e9.html?vhid=9" class="d-block m-auto img-fluid"> #}
+                                {# <img src="admin/img/vehicleimages/h11.jpg" #}
+                                {# class="img-fluid d-block m-auto" alt=""> #}
+                                {# </a> #}
+                                {# <div class="r-best-vehicle-content"> #}
+                                {# <span class="r-register-time">Model 2020</span> #}
+                                {# <a href="javaScript:void(0)" class="r-modal-name"> Hyundai H1 ou #}
+                                {# Similaire <span>Van</span></a> #}
+                                {# <div class="clearfix"> #}
+                                {# <span class="r-average">140 €</b> /Jour</span> #}
+                                {# <span class="r-engine"><img src="assets/images/meter-icon.png" #}
+                                {# class="d-inline-block" #}
+                                {# alt="">2.3K CC</span> #}
+                                {# </div> #}
+                                {# <ul> #}
+                                {# <li><i class="fa fa-cogs"></i><span>Manuelle</span></li> #}
+                                {# <li><i class="fa fa-beer"></i><span>Diesel</span></li> #}
+                                {# <li><i class="fa fa-users"></i><span>9</span></li> #}
+                                {# <li><i class="fa fa-briefcase"></i><span>500L</span></li> #}
+                                {# <li><i class="fa fa-snowflake-o"></i><span>Oui</span></li> #}
+                                {# </ul> #}
+                                {# </div> #}
+                                {# </div> #}
+                                {# </div> #}
 
 
-{#                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12">#}
-{#                                            <div class="r-best-vehicle-single">#}
-{#                                                <a href="resa07ab.html?vhid=12" class="d-block m-auto img-fluid">#}
-{#                                                    <img src="admin/img/vehicleimages/citroen-jumpy-noir-onyx-2016.png"#}
-{#                                                         class="img-fluid d-block m-auto" alt="">#}
-{#                                                </a>#}
-{#                                                <div class="r-best-vehicle-content">#}
-{#                                                    <span class="r-register-time">Model 2020</span>#}
-{#                                                    <a href="javaScript:void(0)" class="r-modal-name">Citro&euml;n Jumpy#}
-{#                                                        <span>Van</span></a>#}
-{#                                                    <div class="clearfix">#}
-{#                                                        <span class="r-average">145 €</b> /Jour</span>#}
-{#                                                        <span class="r-engine"><img src="assets/images/meter-icon.png"#}
-{#                                                                                    class="d-inline-block"#}
-{#                                                                                    alt="">2.3K CC</span>#}
-{#                                                    </div>#}
-{#                                                    <ul>#}
-{#                                                        <li><i class="fa fa-cogs"></i><span>Manuelle</span></li>#}
-{#                                                        <li><i class="fa fa-beer"></i><span>Essence</span></li>#}
-{#                                                        <li><i class="fa fa-users"></i><span>9</span></li>#}
-{#                                                        <li><i class="fa fa-briefcase"></i><span>500L</span></li>#}
-{#                                                        <li><i class="fa fa-snowflake-o"></i><span>Oui</span></li>#}
-{#                                                    </ul>#}
-{#                                                </div>#}
-{#                                            </div>#}
-{#                                        </div>#}
+                                {# <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12"> #}
+                                {# <div class="r-best-vehicle-single"> #}
+                                {# <a href="resa07ab.html?vhid=12" class="d-block m-auto img-fluid"> #}
+                                {# <img src="admin/img/vehicleimages/citroen-jumpy-noir-onyx-2016.png" #}
+                                {# class="img-fluid d-block m-auto" alt=""> #}
+                                {# </a> #}
+                                {# <div class="r-best-vehicle-content"> #}
+                                {# <span class="r-register-time">Model 2020</span> #}
+                                {# <a href="javaScript:void(0)" class="r-modal-name">Citro&euml;n Jumpy #}
+                                {# <span>Van</span></a> #}
+                                {# <div class="clearfix"> #}
+                                {# <span class="r-average">145 €</b> /Jour</span> #}
+                                {# <span class="r-engine"><img src="assets/images/meter-icon.png" #}
+                                {# class="d-inline-block" #}
+                                {# alt="">2.3K CC</span> #}
+                                {# </div> #}
+                                {# <ul> #}
+                                {# <li><i class="fa fa-cogs"></i><span>Manuelle</span></li> #}
+                                {# <li><i class="fa fa-beer"></i><span>Essence</span></li> #}
+                                {# <li><i class="fa fa-users"></i><span>9</span></li> #}
+                                {# <li><i class="fa fa-briefcase"></i><span>500L</span></li> #}
+                                {# <li><i class="fa fa-snowflake-o"></i><span>Oui</span></li> #}
+                                {# </ul> #}
+                                {# </div> #}
+                                {# </div> #}
+                                {# </div> #}
 
 
-{#                                    </div>#}
-{#                                </div>#}
+                                {# </div> #}
+                                {# </div> #}
 
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
     </section>
 {% endblock %}

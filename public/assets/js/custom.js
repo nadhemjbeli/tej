@@ -394,35 +394,13 @@ var App = (function (window) {
         DateTimePicker: function () {
 
 
-            // if($('#datetimepicker2').length > 0){
-            //   $('#datetimepicker3').datetimepicker({
-            //       format: 'DD-MM-YYYY',
-            // 	startDate: '-3d',
-            //
-            //   });
-            //   $('#datetimepicker2').datetimepicker({
-            // 	format: 'DD-MM-YYYY',
-            //
-            //   });
 
-            // if($('#txtDate1').length > 0){
-            //   $('#txtDate2').datetimepicker({
-            //       format: 'DD-MM-YYYY',
-            // 	startDate: '-3d',
-            //
-            //   });
-            //   $('#txtDate1').datetimepicker({
-            // 	format: 'DD-MM-YYYY',
-            //
-            //   });
-            //
-            // }
             var dtToday = new Date();
             // console.log(dtToday);
             let dt2 = new Date();
             dt2.setDate(dtToday.getDate() + 2);
 
-            console.log(dt2);
+            // console.log(dt2);
 
             var month = dtToday.getMonth() + 1;
             var day = dtToday.getDate();
@@ -442,8 +420,24 @@ var App = (function (window) {
 
             var maxDate = year + '-' + month + '-' + day;
             var maxDate2 = year2 + '-' + month2 + '-' + day2;
-            $('#datetimepicker2').attr('min', maxDate).attr('value', maxDate);
-            $('#datetimepicker3').attr('min', maxDate2).attr('value', maxDate2);
+            let date_prise = $('#datetimepicker2');
+            let date_reprise = $('#datetimepicker3');
+            date_prise.attr('min', maxDate).attr('value', maxDate);
+            date_reprise.attr('min', maxDate2).attr('value', maxDate2);
+            var date_prise_val = new Date(Date.parse(date_prise.val()));
+            var date_reprise_val = new Date(Date.parse(date_reprise.val()));
+            var difference = date_reprise_val.getTime()-date_prise_val.getTime();
+            var jours = difference / (1000 * 60 * 60 * 24)
+            var prixActuels = document.getElementsByClassName('prixActuel');
+            var prixTotals = document.getElementsByClassName('prixTotal');
+            for (let i=0; i<prixActuels.length; i++){
+                let prixTotal = prixActuels[i].innerHTML * jours;
+
+                console.log(jours);
+                // console.log();
+                console.log(prixTotal);
+                prixTotals[i].innerHTML = prixTotal.toString();
+            }
         },
 
         MapToggle: function () {

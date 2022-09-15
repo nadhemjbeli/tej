@@ -65,6 +65,19 @@ class VoitureRepository extends ServiceEntityRepository
         ;
     }
 
+    /**
+     * @return Voiture[] Returns an array of string objects
+     */
+    public function findByTransmission(): array
+    {
+        return $this->createQueryBuilder('v')
+            ->groupBy('v.transmission')
+            ->distinct()
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
 //    /**
 //     * @return Voiture[] Returns an array of Voiture objects
 //     */
